@@ -1,0 +1,386 @@
+div.tables table {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.tables {
+    width: 500px;
+}
+
+/*.cardbutton {*/
+    /*color: black;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*font-size: 25px;*/
+    /*width: 100px;*/
+    /*height: 150px;*/
+    /*background-color: ghostwhite;*/
+    /*border: 4px solid lightblue;*/
+    /*border-radius: 12px;*/
+    /*align: center;*/
+    /*text-align: center;*/
+    /*margin: 9px;*/
+/*}*/
+
+.cardbutton {
+   border: 2px solid #0a3c59;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(white), to(lightgrey));
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+
+   /*-webkit-border-radius: 12px;*/
+   /*-moz-border-radius: 12px;*/
+   /*border-radius: 12px;*/
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #7ea4bd 0 1px 0;
+   color: #06426c;
+   font-size: 20px;
+   font-family: "ING Me", serif;
+   text-decoration: none;
+    width: 65px;
+    height: 95px;
+    margin: 9px;
+    align: center;
+    text-align: center;
+    box-shadow: 5px 5px lightslategrey;
+   }
+
+.cardbutton:hover {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #fff;
+   }
+
+.cardbutton:focus {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: -webkit-gradient(linear, left top, left bottom, from(lightgreen), to(darkgreen));
+   color: #fff;transform: translateY(4px);
+   }
+
+.cardtable:hover {
+    background-color: cornflowerblue;
+}
+
+.cardbutton:hover {
+    background-color: cornflowerblue;
+}
+
+/*.cardbuttonvote:hover {*/
+    /*background-color: cornflowerblue;*/
+/*}*/
+
+
+/*.cardbuttonvote {*/
+    /*color: black;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*font-size: 25px;*/
+    /*width: 200px;*/
+    /*height: 50px;*/
+    /*background-color: white;*/
+    /*border: 4px solid lightblue;*/
+    /*border-radius: 12px;*/
+    /*align: center;*/
+    /*text-align: center;*/
+/*}*/
+
+.cardbuttonvote {
+    border: 2px solid #0a3c59;
+    background: #3e779d;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(lightgrey));
+    background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset rgba(255, 255, 255, 0.4) 0 1px 0;
+    -moz-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset rgba(255, 255, 255, 0.4) 0 1px 0;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset rgba(255, 255, 255, 0.4) 0 1px 0;
+    text-shadow: #7ea4bd 0 1px 0;
+    color: #06426c;
+    font-size: 25px;
+    font-family: "ING Me", serif;
+    text-decoration: none;
+    width: 200px;
+    height: 50px;
+    margin: 9px;
+    align: center;
+    text-align: center;
+    box-shadow: 5px 5px lightslategrey;
+}
+
+.cardbuttonvote:hover {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #fff;
+   }
+.cardbuttonvote:active {
+   text-shadow: #1e4158 0 1px 0;
+   border: 2px solid #0a3c59;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+   color: #fff;
+   }
+
+.addstoryvote {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    width: 100px;
+    height: 32px;
+    background-color: white;
+    border: 2px solid lightblue;
+    border-radius: 12px;
+    align: center;
+    text-align: center;
+}
+
+.addstoryvote:hover {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+
+   color: #fff;
+   }
+
+#outer {
+    width: 100%;
+    text-align: center;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50% 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.daily {
+   border: 2px solid #0a3c59;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(white), to(lightgrey));
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+
+   /*-webkit-border-radius: 12px;*/
+   /*-moz-border-radius: 12px;*/
+   /*border-radius: 12px;*/
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #7ea4bd 0 1px 0;
+   color: #06426c;
+   font-size: 20px;
+   font-family: "ING Me", serif;
+   text-decoration: none;
+    width: 120px;
+    height: 95px;
+    margin: 9px;
+    align: center;
+    text-align: center;
+    box-shadow: 5px 5px lightslategrey;
+   }
+
+.daily:hover {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #fff;
+   }
+
+.daily:focus {
+   border: 2px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: -webkit-gradient(linear, left top, left bottom, from(lightgreen), to(darkgreen));
+   color: #fff;transform: translateY(4px);
+   }
+
+.daily:hover {
+    background-color: cornflowerblue;
+}
+
+.daily:hover {
+    background-color: cornflowerblue;
+}
+
+.health-bar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+.bar {
+  background: #c54;
+  width: 100%;
+  height: 10px;
+  position: relative;
+
+  transition: width .5s linear;
+}
+
+.hit {
+  background: rgba(255,255,255,0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+
+  transition: width .5s linear;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+#add:hover {
+            color: dodgerblue;
+            cursor: pointer;
+            filter: blur(1px);
+        }
+
+#add:active {
+            text-shadow: #1e4158 0 1px 0;
+            color: green;
+            cursor: pointer;
+        }
+
+
+
+.blue-section{
+    background: cornflowerblue;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+.green-section{
+    background: #009688;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+#vote:hover {
+            color: dodgerblue;
+            cursor: pointer;
+            filter: blur(1px);
+        }
+
+#vote:active {
+            text-shadow: #1e4158 0 1px 0;
+            color: green;
+            cursor: pointer;
+        }

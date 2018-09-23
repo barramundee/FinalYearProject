@@ -1,0 +1,82 @@
+{% extends 'home/dashboard.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block secondary %}
+    <html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    </head>
+
+    <style>
+        input[type=text] {
+            width: 200px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+
+        }
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+            width: 74%;
+        }
+    </style>
+
+
+{#    <h3 align="center"> <span style="margin-left: 8px;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"#}
+{#                                                                                     type="text"#}
+{#                                                                                     placeholder="&nbsp;Search">&nbsp;<i#}
+{#            id="searchbutton" class="fas fa-search add" style="color: #ccc"></i></span></h3>#}
+    <h2 style="text-align: center; color: black"> Hi <span style="color: cornflowerblue">{{ user.first_name }}</span>, you have completed <span style="color: cornflowerblue">{{ user.profile.completedtasks }}</span> tasks today!</h2>
+    <div class="section-clear">
+        <div class="row">
+            <div class="col-md-12 section">
+                <h3>News Feed</h3>
+                <hr>
+                     <h3 align="left"> <span style="margin-left: 0;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"
+                                                                                     type="text"
+                                                                                     placeholder="&nbsp;Share an update">&nbsp;<i
+            id="searchbutton" class="fas fa-check-circle add" style="color: #ccc"></i></span></h3>
+
+                {% for task in tasks %}
+                    {% if task.type == "todo" %}
+                        {{ task.task }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript">
+
+        $("#searchbar").on('keyup', function (e) {
+            if (e.keyCode === 13) {
+                let search = $("#searchbar").val();
+                alert(search)
+            }
+        });
+
+        $('#searchbutton').on('click', function (e) {
+                let search = $("#searchbar").val();
+                alert(search)
+        });
+
+    </script>
+{% endblock %}

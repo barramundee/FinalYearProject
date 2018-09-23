@@ -1,0 +1,57 @@
+{% extends 'home/baselogin.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    </head>
+
+    <style>
+
+    </style>
+
+    <body id="LoginForm">
+    <center>
+        <div class="container">
+
+                <div class="section" id="section1" style="display: none">
+
+                    <div class="panel">
+                        <h2>ScrumEz</h2>
+                        <p>You have logged out.</p>
+                    </div>
+
+                    <form method="post" id="Login">
+                        <br>
+                        <div class="forgot">
+                            <a href="/login">Log back in?</a>
+                        </div>
+                    </form>
+                </div>
+
+        </div>
+        <div>
+        </div>
+
+
+        </center>
+    </body>
+    </html>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript">
+
+        setTimeout(function test() {
+            $('#section1').fadeIn("slow");
+        }, 100);
+
+    </script>
+{% endblock %}

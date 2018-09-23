@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+    {% block content %}
+        <div class="col-md-2 side-bar" style="display: block;">
+            <div class="side-bar-section">
+                <div class="side-bar-section-heading">
+                    <i class="fas fa-home"></i>&nbsp; Home
+                </div>
+                    <div class="side-bar-section-links">
+                        <li>
+                            <a href="{% url 'home:homepage' %}"><img src="{% static '/icons/home.png' %}" height="18" width="18"/>&nbsp; Dashboard</a>
+                            <a href="{% url 'home:profile' %}"><img src="{% static '/icons/profile.png' %}" height="18" width="18"/>&nbsp; Profile</a>
+                        </li>
+                    </div>
+                <br>
+                <div class="side-bar-section-heading">
+                    <i class="fas fa-home"></i>&nbsp; Settings
+                </div>
+                    <div class="side-bar-section-links">
+                        <li>
+                            <a href="{% url 'admin:index' %}"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDk0LjgzNCA5NC44MzMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk0LjgzNCA5NC44MzM7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDQuNzk0LDQ2Ljk4N2MwLTAuNTMtMC4yMTEtMS4wMzktMC41ODYtMS40MTRMMTEuNDQ0LDEyLjgxMmMtMC43ODEtMC43ODEtMi4wNDctMC43ODEtMi44MjgsMGwtOC4wMyw4LjAyOSAgICBDMC4yMTEsMjEuMjE1LDAsMjEuNzI1LDAsMjIuMjU0YzAsMC41MywwLjIxMSwxLjAzOSwwLjU4NiwxLjQxNGwyMy4zMTksMjMuMzE5TDAuNTg2LDcwLjMwN0MwLjIxMSw3MC42ODIsMCw3MS4xOTEsMCw3MS43MjEgICAgczAuMjExLDEuMDM5LDAuNTg2LDEuNDE0bDguMDMsOC4wMjljMC4zOTEsMC4zOTEsMC45MDIsMC41ODYsMS40MTQsMC41ODZjMC41MTIsMCwxLjAyMy0wLjE5NSwxLjQxNC0wLjU4NmwzMi43NjQtMzIuNzY0ICAgIEM0NC41ODMsNDguMDI2LDQ0Ljc5NCw0Ny41MTksNDQuNzk0LDQ2Ljk4N3oiIGZpbGw9IiMwMDAwMDAiLz4KCQk8cGF0aCBkPSJNOTIuODM0LDY5LjgxMUg0MS45OGMtMS4xMDQsMC0yLDAuODk2LTIsMnY4Ljc5N2MwLDEuMTA0LDAuODk2LDIsMiwyaDUwLjg1NGMxLjEwNCwwLDItMC44OTYsMi0ydi04Ljc5NyAgICBDOTQuODM0LDcwLjcwNyw5My45MzgsNjkuODExLDkyLjgzNCw2OS44MTF6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" height="18" width="18"/>&nbsp; Admin</a>
+                        </li>
+                    </div>
+            </div>
+        </div>
+
+        <div class="col-md-10 x-uni-padding">
+
+        <div class=" x-uni-padding scroll">
+
+
+            {% block secondary %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% endblock %}
+
+{% block script %}
+
+    <script language="JavaScript">
+
+
+    </script>
+
+{% endblock %}

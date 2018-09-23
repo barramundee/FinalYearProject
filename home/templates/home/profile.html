@@ -1,0 +1,346 @@
+{% extends 'home/dashboard.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/poker.css' %}">
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block secondary %}
+    <html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/poker.css' %}">
+    </head>
+
+    <style>
+        /* Let's get this party started */
+
+    </style>
+    <body>
+    {% csrf_token %}
+    <div class="section-clear">
+        <div class="section">
+            <div class="row">
+
+                <div class="col-md-2">
+                    {% if user.profile.profilepic.url %}
+                        <img src="{{ user.profile.profilepic.url }}" width="140">
+                    {% else %}
+                        <img src=" " width="140">
+                    {% endif %}
+                </div>
+
+                <div class="col-md-10">
+                    <h3>{{ user.first_name }} {{ user.last_name }} ({{ user.profile.age }})<span
+                            style="color: black; font-style: italic"> {{ user.profile.jobtitle }}</span><span
+                            style="float: right"><img id="add"
+                                                      src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU1LjI1IDU1LjI1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1NS4yNSA1NS4yNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIxMjhweCIgaGVpZ2h0PSIxMjhweCI+CjxwYXRoIGQ9Ik01Mi42MTgsMi42MzFjLTMuNTEtMy41MDgtOS4yMTktMy41MDgtMTIuNzI5LDBMMy44MjcsMzguNjkzQzMuODEsMzguNzEsMy44LDM4LjczMSwzLjc4NSwzOC43NDkgIGMtMC4wMjEsMC4wMjQtMC4wMzksMC4wNS0wLjA1OCwwLjA3NmMtMC4wNTMsMC4wNzQtMC4wOTQsMC4xNTMtMC4xMjUsMC4yMzljLTAuMDA5LDAuMDI2LTAuMDIyLDAuMDQ5LTAuMDI5LDAuMDc1ICBjLTAuMDAzLDAuMDEtMC4wMDksMC4wMi0wLjAxMiwwLjAzbC0zLjUzNSwxNC44NWMtMC4wMTYsMC4wNjctMC4wMiwwLjEzNS0wLjAyMiwwLjIwMkMwLjAwNCw1NC4yMzQsMCw1NC4yNDYsMCw1NC4yNTkgIGMwLjAwMSwwLjExNCwwLjAyNiwwLjIyNSwwLjA2NSwwLjMzMmMwLjAwOSwwLjAyNSwwLjAxOSwwLjA0NywwLjAzLDAuMDcxYzAuMDQ5LDAuMTA3LDAuMTEsMC4yMSwwLjE5NiwwLjI5NiAgYzAuMDk1LDAuMDk1LDAuMjA3LDAuMTY4LDAuMzI4LDAuMjE4YzAuMTIxLDAuMDUsMC4yNSwwLjA3NSwwLjM3OSwwLjA3NWMwLjA3NywwLDAuMTU1LTAuMDA5LDAuMjMxLTAuMDI3bDE0Ljg1LTMuNTM1ICBjMC4wMjctMC4wMDYsMC4wNTEtMC4wMjEsMC4wNzctMC4wM2MwLjAzNC0wLjAxMSwwLjA2Ni0wLjAyNCwwLjA5OS0wLjAzOWMwLjA3Mi0wLjAzMywwLjEzOS0wLjA3NCwwLjIwMS0wLjEyMyAgYzAuMDI0LTAuMDE5LDAuMDQ5LTAuMDMzLDAuMDcyLTAuMDU0YzAuMDA4LTAuMDA4LDAuMDE4LTAuMDEyLDAuMDI2LTAuMDJsMzYuMDYzLTM2LjA2M0M1Ni4xMjcsMTEuODUsNTYuMTI3LDYuMTQsNTIuNjE4LDIuNjMxeiAgIE01MS4yMDQsNC4wNDVjMi40ODgsMi40ODksMi43LDYuMzk3LDAuNjUsOS4xMzdsLTkuNzg3LTkuNzg3QzQ0LjgwOCwxLjM0NSw0OC43MTYsMS41NTcsNTEuMjA0LDQuMDQ1eiBNNDYuMjU0LDE4Ljg5NWwtOS45LTkuOSAgbDEuNDE0LTEuNDE0bDkuOSw5LjlMNDYuMjU0LDE4Ljg5NXogTTQuOTYxLDUwLjI4OGMtMC4zOTEtMC4zOTEtMS4wMjMtMC4zOTEtMS40MTQsMEwyLjc5LDUxLjA0NWwyLjU1NC0xMC43MjhsNC40MjItMC40OTEgIGwtMC41NjksNS4xMjJjLTAuMDA0LDAuMDM4LDAuMDEsMC4wNzMsMC4wMSwwLjExYzAsMC4wMzgtMC4wMTQsMC4wNzItMC4wMSwwLjExYzAuMDA0LDAuMDMzLDAuMDIxLDAuMDYsMC4wMjgsMC4wOTIgIGMwLjAxMiwwLjA1OCwwLjAyOSwwLjExMSwwLjA1LDAuMTY1YzAuMDI2LDAuMDY1LDAuMDU3LDAuMTI0LDAuMDk1LDAuMTgxYzAuMDMxLDAuMDQ2LDAuMDYyLDAuMDg3LDAuMSwwLjEyNyAgYzAuMDQ4LDAuMDUxLDAuMSwwLjA5NCwwLjE1NywwLjEzNGMwLjA0NSwwLjAzMSwwLjA4OCwwLjA2LDAuMTM4LDAuMDg0QzkuODMxLDQ1Ljk4Miw5LjksNDYsOS45NzIsNDYuMDE3ICBjMC4wMzgsMC4wMDksMC4wNjksMC4wMywwLjEwOCwwLjAzNWMwLjAzNiwwLjAwNCwwLjA3MiwwLjAwNiwwLjEwOSwwLjAwNmMwLDAsMC4wMDEsMCwwLjAwMSwwYzAsMCwwLjAwMSwwLDAuMDAxLDBoMC4wMDEgIGMwLDAsMC4wMDEsMCwwLjAwMSwwYzAuMDM2LDAsMC4wNzMtMC4wMDIsMC4xMDktMC4wMDZsNS4xMjItMC41NjlsLTAuNDkxLDQuNDIyTDQuMjA0LDUyLjQ1OWwwLjc1Ny0wLjc1NyAgQzUuMzUxLDUxLjMxMiw1LjM1MSw1MC42NzksNC45NjEsNTAuMjg4eiBNMTcuNTExLDQ0LjgwOUwzOS44ODksMjIuNDNjMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNHMtMS4wMjMtMC4zOTEtMS40MTQsMCAgTDE2LjA5Nyw0My4zOTVsLTQuNzczLDAuNTNsMC41My00Ljc3M2wyMi4zOC0yMi4zNzhjMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNHMtMS4wMjMtMC4zOTEtMS40MTQsMEwxMC40NCwzNy43MzggIGwtMy4xODMsMC4zNTRMMzQuOTQsMTAuNDA5bDkuOSw5LjlMMTcuMTU3LDQ3Ljk5MkwxNy41MTEsNDQuODA5eiBNNDkuMDgyLDE2LjA2N2wtOS45LTkuOWwxLjQxNS0xLjQxNWw5LjksOS45TDQ5LjA4MiwxNi4wNjd6IiBmaWxsPSIjMDAwMDAwIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+                                                      width="18" style="margin-right: 30px"/></span></h3>
+                    <hr>
+                    {{ user.profile.bio }}
+                </div>
+            </div>
+        </div>
+
+        <div class="section-clear">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><i class="fas fa-book" style="float: right"></i> To Do Tasks &nbsp;<img
+                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQyIDQyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MiA0MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiMyM0EyNEQ7IiBkPSJNMzcuMDU5LDE2SDI2VjQuOTQxQzI2LDIuMjI0LDIzLjcxOCwwLDIxLDBzLTUsMi4yMjQtNSw0Ljk0MVYxNkg0Ljk0MUMyLjIyNCwxNiwwLDE4LjI4MiwwLDIxICBzMi4yMjQsNSw0Ljk0MSw1SDE2djExLjA1OUMxNiwzOS43NzYsMTguMjgyLDQyLDIxLDQyczUtMi4yMjQsNS00Ljk0MVYyNmgxMS4wNTlDMzkuNzc2LDI2LDQyLDIzLjcxOCw0MiwyMVMzOS43NzYsMTYsMzcuMDU5LDE2eiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
+                            width="15" onclick="addtask()" id="add"/></h4>
+                    <hr style="border-color: darkslategrey">
+
+                    <div id="createtask" style="display: none">
+                        <div class="section-sub-heading">
+                            Task's Title
+                            <input type="text" id="titletext" class="form-control">
+                            <br>
+                        </div>
+                    </div>
+
+                    <div id="taskpoint" style="display: none">
+                        <div class="section-sub-heading">
+                            Task's Points (0-100)
+                        </div>
+                        <input type="text" id="pointstext" class="form-control">
+                        <br>
+                    </div>
+
+                    <div id="createbuttondiv" style="display: none; float: right">
+                        <button id="createbutton" class="addstoryvote" onclick="postStory()"> Add Story
+                        </button>
+                    </div>
+
+                    <div id="to_do" style="">
+                        {% for task in tasks %}
+                            {% if task.type == "todo" and task.profile == user.get_full_name %}
+                                <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px">
+                                    "{{ task.task }} [ {{ task.points }} ]" <span
+                                        style="font-style: italic">-{{ task.profile }}</span>
+                                    <br>
+                                    <span style="float: right; font-size: 19px; background-color: royalblue">&nbsp;({{ task.votes }}) &nbsp;<img
+                                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3OC4yIDQ3OC4yIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NzguMiA0NzguMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI2NHB4IiBoZWlnaHQ9IjY0cHgiPgo8Zz4KCTxwYXRoIGQ9Ik00NTcuNTc1LDMyNS4xYzkuOC0xMi41LDE0LjUtMjUuOSwxMy45LTM5LjdjLTAuNi0xNS4yLTcuNC0yNy4xLTEzLTM0LjRjNi41LTE2LjIsOS00MS43LTEyLjctNjEuNSAgIGMtMTUuOS0xNC41LTQyLjktMjEtODAuMy0xOS4yYy0yNi4zLDEuMi00OC4zLDYuMS00OS4yLDYuM2gtMC4xYy01LDAuOS0xMC4zLDItMTUuNywzLjJjLTAuNC02LjQsMC43LTIyLjMsMTIuNS01OC4xICAgYzE0LTQyLjYsMTMuMi03NS4yLTIuNi05N2MtMTYuNi0yMi45LTQzLjEtMjQuNy01MC45LTI0LjdjLTcuNSwwLTE0LjQsMy4xLTE5LjMsOC44Yy0xMS4xLDEyLjktOS44LDM2LjctOC40LDQ3LjcgICBjLTEzLjIsMzUuNC01MC4yLDEyMi4yLTgxLjUsMTQ2LjNjLTAuNiwwLjQtMS4xLDAuOS0xLjYsMS40Yy05LjIsOS43LTE1LjQsMjAuMi0xOS42LDI5LjRjLTUuOS0zLjItMTIuNi01LTE5LjgtNWgtNjEgICBjLTIzLDAtNDEuNiwxOC43LTQxLjYsNDEuNnYxNjIuNWMwLDIzLDE4LjcsNDEuNiw0MS42LDQxLjZoNjFjOC45LDAsMTcuMi0yLjgsMjQtNy42bDIzLjUsMi44YzMuNiwwLjUsNjcuNiw4LjYsMTMzLjMsNy4zICAgYzExLjksMC45LDIzLjEsMS40LDMzLjUsMS40YzE3LjksMCwzMy41LTEuNCw0Ni41LTQuMmMzMC42LTYuNSw1MS41LTE5LjUsNjIuMS0zOC42YzguMS0xNC42LDguMS0yOS4xLDYuOC0zOC4zICAgYzE5LjktMTgsMjMuNC0zNy45LDIyLjctNTEuOUM0NjEuMjc1LDMzNy4xLDQ1OS40NzUsMzMwLjIsNDU3LjU3NSwzMjUuMXogTTQ4LjI3NSw0NDcuM2MtOC4xLDAtMTQuNi02LjYtMTQuNi0xNC42VjI3MC4xICAgYzAtOC4xLDYuNi0xNC42LDE0LjYtMTQuNmg2MWM4LjEsMCwxNC42LDYuNiwxNC42LDE0LjZ2MTYyLjVjMCw4LjEtNi42LDE0LjYtMTQuNiwxNC42aC02MVY0NDcuM3ogTTQzMS45NzUsMzEzLjQgICBjLTQuMiw0LjQtNSwxMS4xLTEuOCwxNi4zYzAsMC4xLDQuMSw3LjEsNC42LDE2LjdjMC43LDEzLjEtNS42LDI0LjctMTguOCwzNC42Yy00LjcsMy42LTYuNiw5LjgtNC42LDE1LjRjMCwwLjEsNC4zLDEzLjMtMi43LDI1LjggICBjLTYuNywxMi0yMS42LDIwLjYtNDQuMiwyNS40Yy0xOC4xLDMuOS00Mi43LDQuNi03Mi45LDIuMmMtMC40LDAtMC45LDAtMS40LDBjLTY0LjMsMS40LTEyOS4zLTctMTMwLTcuMWgtMC4xbC0xMC4xLTEuMiAgIGMwLjYtMi44LDAuOS01LjgsMC45LTguOFYyNzAuMWMwLTQuMy0wLjctOC41LTEuOS0xMi40YzEuOC02LjcsNi44LTIxLjYsMTguNi0zNC4zYzQ0LjktMzUuNiw4OC44LTE1NS43LDkwLjctMTYwLjkgICBjMC44LTIuMSwxLTQuNCwwLjYtNi43Yy0xLjctMTEuMi0xLjEtMjQuOSwxLjMtMjljNS4zLDAuMSwxOS42LDEuNiwyOC4yLDEzLjVjMTAuMiwxNC4xLDkuOCwzOS4zLTEuMiw3Mi43ICAgYy0xNi44LDUwLjktMTguMiw3Ny43LTQuOSw4OS41YzYuNiw1LjksMTUuNCw2LjIsMjEuOCwzLjljNi4xLTEuNCwxMS45LTIuNiwxNy40LTMuNWMwLjQtMC4xLDAuOS0wLjIsMS4zLTAuMyAgIGMzMC43LTYuNyw4NS43LTEwLjgsMTA0LjgsNi42YzE2LjIsMTQuOCw0LjcsMzQuNCwzLjQsMzYuNWMtMy43LDUuNi0yLjYsMTIuOSwyLjQsMTcuNGMwLjEsMC4xLDEwLjYsMTAsMTEuMSwyMy4zICAgQzQ0NC44NzUsMjk1LjMsNDQwLjY3NSwzMDQuNCw0MzEuOTc1LDMxMy40eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+                                            width="20" height="20" id="vote" onclick="thumbsup(this)"
+                                            data-value="{{ task.task }}" data-points="{{ task.points }}" data-votes="{{ task.votes }}"/>&nbsp;&nbsp;<img
+                                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4Ni44MDUgNDg2LjgwNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDg2LjgwNSA0ODYuODA1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPHBhdGggZD0iTTQ4NS45LDI0MS40MDJsLTI2LjgtMTY3Yy01LjItNDEuOS0zNC41LTY2LTgwLjQtNjZIMjQzLjZoLTYuOGgtNjUuOWMtMTkuMiwwLTM2LjksOC4zLTQ5LjQsMjEuNiAgIGMtNC41LTUuNS0xMS40LTguOS0xOS04LjlIMjQuN2MtMTMuNiwwLTI0LjcsMTEuMS0yNC43LDI0Ljd2MjI4LjRjMCwxMy42LDExLjEsMjQuNywyNC43LDI0LjdoNzcuOWM5LDAsMTctNC45LDIxLjMtMTIuMmwyLjksMC43ICAgYzQuNCwxLjMsODAuOCwyNSw4MC44LDkwLjd2ODQuOWMwLDUuMiwzLjQsOS45LDguNCwxMS40YzAuOSwwLjMsMTIuOSw0LDI4LjMsNGMxMy4zLDAsMjkuMS0yLjcsNDIuNS0xMi42ICAgYzE4LjQtMTMuNSwyNy43LTM2LjUsMjcuNy02OC40di03NS44aDMyLjRoNTYuOWgxNS44YzE1LjYsMCwzMS01LjgsNDMuMy0xNi4yQzQ4MC45LDI5MC4wMDIsNDg5LjgsMjY1LjQwMiw0ODUuOSwyNDEuNDAyeiAgICBNMTAzLjIsMjc0LjMwMmMwLDAuNC0wLjMsMC43LTAuNywwLjdIMjQuN2MtMC40LDAtMC43LTAuMy0wLjctMC43di0yMjguNGMwLTAuNCwwLjMtMC43LDAuNy0wLjdoNzcuOWMwLjQsMCwwLjcsMC4zLDAuNywwLjcgICB2MjI4LjRIMTAzLjJ6IE00NDcuMywyODcuMjAyYy03LjksNi44LTE3LjgsMTAuNS0yNy43LDEwLjVoLTE1LjhoLTU2LjloLTQ0LjVjLTYuNiwwLTEyLDUuNC0xMiwxMnY4Ny44YzAsMjMuOC02LDQwLjMtMTcuOCw0OSAgIGMtMTMsOS42LTMwLjgsOC42LTQxLjEsN3YtNzUuM2MwLTM1LjYtMTcuMy02Ni43LTQ5LjktODkuOWMtMjMuOS0xNi45LTQ3LjYtMjMuNy00OC42LTI0Yy0wLjIsMC0wLjMtMC4xLTAuNS0wLjFsLTUuMi0xLjJ2LTE5MS41ICAgYzAuMi0wLjcsMC40LTEuNCwwLjUtMi4xYzMuMy0yMSwyMS44LTM2LjksNDMuMS0zNi45aDY1LjloNi44aDEzNS4xYzMzLjksMCw1Mi45LDE1LjIsNTYuNiw0NS4xYzAsMC4yLDAsMC4zLDAuMSwwLjRsMjYuOSwxNjcuMSAgIEM0NjQuOCwyNjEuMDAyLDQ1OSwyNzcuMTAyLDQ0Ny4zLDI4Ny4yMDJ6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="
+                                            width="20" height="20" id="vote" onclick="thumbsdown(this)"
+                                            data-value="{{ task.task }}" data-points="{{ task.points }}" data-votes="{{ task.votes }}"/> &nbsp;<img
+                                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDMyIDMyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMiAzMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxnIGlkPSJQZW5jaWwiPgoJCTxnPgoJCQk8cGF0aCBkPSJNMzAuMjc2LDEuNzIyQzI5LjE2OCwwLjYxMSwyNy42OSwwLDI2LjEyMSwwcy0zLjA0NSwwLjYxLTQuMTU0LDEuNzJMNC4yOTQsMTkuMjkxYy0wLjEwNSwwLjEwNC0wLjE4NSwwLjIyOS0wLjIzNSwwLjM2NyAgICAgbC00LDExYy0wLjEyOSwwLjM1NS0wLjA0NiwwLjc1NiwwLjIxNSwxLjAzMUMwLjQ2NiwzMS44OTEsMC43MjksMzIsMSwzMmMwLjA5OCwwLDAuMTk2LTAuMDE0LDAuMjkzLTAuMDQ0bDkuOTQ5LTMuMDUyICAgICBjMC4xNTYtMC4wNDcsMC4yOTgtMC4xMzMsMC40MTQtMC4yNDhsMTguNjIxLTE4LjYyMUMzMS4zODksOC45MjYsMzIsNy40NDgsMzIsNS44NzhDMzEuOTk5LDQuMzA5LDMxLjM4OSwyLjgzMiwzMC4yNzYsMS43MjJ6ICAgICAgTTEwLjA5MiwyNy4xNjVsLTMuNzI0LDEuMTQ0Yy0wLjIxNy0wLjYzNy0wLjU1NS0xLjIwMS0xLjAxNi0xLjY2MmMtMC40MDEtMC4zOTktMC44NjYtMC43MDktMS4zNTYtMC45NjFMNS43LDIxSDh2MiAgICAgYzAsMC41NTMsMC40NDcsMSwxLDFoMS43NjVMMTAuMDkyLDI3LjE2NXogTTI0LjgxMiwxMi42NzFMMTIuNjI4LDI0Ljg1NWwwLjM1LTEuNjQ3YzAuMDYyLTAuMjk2LTAuMDEyLTAuNjAzLTAuMjAyLTAuODM3ICAgICBDMTIuNTg2LDIyLjEzNiwxMi4zMDEsMjIsMTIsMjJoLTJ2LTJjMC0wLjU1Mi0wLjQ0OC0xLTEtMUg3LjQyMkwxOS4zMTUsNy4xNzVsMC4wMTIsMC4wMTFjMC43MzItMC43MzMsMS43MDctMS4xMzYsMi43NDItMS4xMzYgICAgIHMyLjAxMSwwLjQwMywyLjc0MiwxLjEzNnMxLjEzOCwxLjcwNywxLjEzOCwyLjc0M0MyNS45NDksMTAuOTY1LDI1LjU0NiwxMS45MzgsMjQuODEyLDEyLjY3MXogTTI4Ljg2Miw4LjYyMUwyNy45Myw5LjU1NCAgICAgYy0wLjA5LTEuNDI5LTAuNjgzLTIuNzYxLTEuNzAzLTMuNzgyYy0xLjAyMS0xLjAyMi0yLjM1NC0xLjYxNC0zLjc4Ny0xLjcwM2wwLjkzOC0wLjkzMWwwLjAwMi0wLjAwMiAgICAgQzI0LjExLDIuNDAzLDI1LjA4NSwyLDI2LjEyMSwyczIuMDEsMC40MDMsMi43NDEsMS4xMzZDMjkuNTk2LDMuODY5LDMwLDQuODQzLDMwLDUuODc4QzMwLDYuOTE1LDI5LjU5OCw3Ljg4OSwyOC44NjIsOC42MjF6ICAgICAgTTIyLjI5Myw4LjI5M2wtMTAsMTBjLTAuMzkxLDAuMzkxLTAuMzkxLDEuMDIzLDAsMS40MTRDMTIuNDg3LDE5LjkwMiwxMi43NDQsMjAsMTMsMjBzMC41MTEtMC4wOTgsMC43MDctMC4yOTNsMTAtMTAgICAgIGMwLjM5MS0wLjM5MSwwLjM5MS0xLjAyMywwLTEuNDE0QzIzLjMxNSw3LjkwMiwyMi42ODQsNy45MDIsMjIuMjkzLDguMjkzeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTwvZz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
+                                            width="20" height="20" id="vote" onclick="edit(this)"
+                                            data-value="{{ task.task }}"
+                                            data-votes="{{ task.votes }}" data-points="{{ task.points }}"/>&nbsp;<img
+                                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBzdHlsZT0iZmlsbDojRjVGMEVCOyIgZD0iTTUxMiwyNTYuMDA1YzAsNjguMzgtMjYuNjI5LDEzMi42NjQtNzQuOTgsMTgxLjAxNVMzMjQuMzg1LDUxMiwyNTYuMDA1LDUxMiAgUzEyMy4zMzEsNDg1LjM3MSw3NC45OCw0MzcuMDJTMCwzMjQuMzg1LDAsMjU2LjAwNVMyNi42MjksMTIzLjMzMSw3NC45OCw3NC45OFMxODcuNjI1LDAsMjU2LjAwNSwwUzM4OC42NjksMjYuNjI5LDQzNy4wMiw3NC45OCAgUzUxMiwxODcuNjI1LDUxMiwyNTYuMDA1eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojRENEMkNEOyIgZD0iTTUxMiwyNTYuMDA1YzAsNjguMzgtMjYuNjI5LDEzMi42NjQtNzQuOTgsMTgxLjAxNVMzMjQuMzg1LDUxMiwyNTYuMDA1LDUxMlYwICBjNjguMzgsMCwxMzIuNjY0LDI2LjYyOSwxODEuMDE1LDc0Ljk4UzUxMiwxODcuNjI1LDUxMiwyNTYuMDA1eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojQTdEMjJBOyIgZD0iTTQ0Ni43MzQsMjU2LjAwNWMwLDEwNS4xNjQtODUuNTY1LDE5MC43MTktMTkwLjcyOSwxOTAuNzE5ICBjLTEwNS4xNzQsMC0xOTAuNzI5LTg1LjU1NS0xOTAuNzI5LTE5MC43MTljMC0xMDUuMTc0LDg1LjU1NS0xOTAuNzI5LDE5MC43MjktMTkwLjcyOSAgQzM2MS4xNjksNjUuMjc2LDQ0Ni43MzQsMTUwLjgzMSw0NDYuNzM0LDI1Ni4wMDV6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiM2NkJCMDA7IiBkPSJNNDQ2LjczNCwyNTYuMDA1YzAsMTA1LjE2NC04NS41NjUsMTkwLjcxOS0xOTAuNzI5LDE5MC43MTlWNjUuMjc2ICBDMzYxLjE2OSw2NS4yNzYsNDQ2LjczNCwxNTAuODMxLDQ0Ni43MzQsMjU2LjAwNXoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0zMTYuNzE0LDIzMy41MzJsLTYwLjcwOSw2MC43MTlsLTUuNTQ4LDUuNTQ4Yy0yLjk3NCwyLjk3NC02Ljg3LDQuNDU3LTEwLjc3Niw0LjQ1N2gtMC4yMyAgYy0zLjg0NiwwLTcuNjkxLTEuNDYyLTEwLjYyNi00LjM5NmwtMzIuNjc4LTMyLjY4OGMtNS44NjktNS44NTktNS44NjktMTUuMzczLDAtMjEuMjQxczE1LjM4My01Ljg2OSwyMS4yNDEsMGwyMS45MzIsMjEuOTIyICBsMTYuNjg0LTE2LjY4NGwzOS4xNzctMzkuMTc3YzUuOTQ5LTUuOTQ5LDE1LjU5My01Ljk0OSwyMS41MzIsMEMzMjIuNjYzLDIxNy45MzksMzIyLjY2MywyMjcuNTgzLDMxNi43MTQsMjMzLjUzMnoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0Y1RjBFQjsiIGQ9Ik0zMTYuNzE0LDIzMy41MzJsLTYwLjcwOSw2MC43MTl2LTQzLjA4M2wzOS4xNzctMzkuMTc3YzUuOTQ5LTUuOTQ5LDE1LjU5My01Ljk0OSwyMS41MzIsMCAgQzMyMi42NjMsMjE3LjkzOSwzMjIuNjYzLDIyNy41ODMsMzE2LjcxNCwyMzMuNTMyeiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
+                                            width="20" height="20" id="vote" onclick="complete_(this)"
+                                            data-value="{{ task.task }}" data-points="{{ task.points }}" data-votes="{{ task.votes }}"/>&nbsp;<img
+                                            src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGNpcmNsZSBzdHlsZT0iZmlsbDojRTIxQjFCOyIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNDNDA2MDY7IiBkPSJNNTEwLjI4LDI4NS4zMDRMMzY3LjkxMiwxNDIuOTM2TDE1MC4yNDgsMzY4LjYwOGwxNDAuOTI4LDE0MC45MjggIEM0MDYuMzUyLDQ5My42OTYsNDk3LjA1Niw0MDEuMjg4LDUxMC4yOCwyODUuMzA0eiIvPgo8Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMzU0LjM3NiwzNzEuNTM2Yy01LjEyLDAtMTAuMjMyLTEuOTUyLTE0LjE0NC01Ljg1NkwxNDYuNDA4LDE3MS44NDggICBjLTcuODE2LTcuODE2LTcuODE2LTIwLjQ3MiwwLTI4LjI4czIwLjQ3Mi03LjgxNiwyOC4yOCwwTDM2OC41MiwzMzcuNGM3LjgxNiw3LjgxNiw3LjgxNiwyMC40NzIsMCwyOC4yOCAgIEMzNjQuNjA4LDM2OS41ODQsMzU5LjQ5NiwzNzEuNTM2LDM1NC4zNzYsMzcxLjUzNnoiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMTYwLjU0NCwzNzEuNTM2Yy01LjEyLDAtMTAuMjMyLTEuOTUyLTE0LjE0NC01Ljg1NmMtNy44MTYtNy44MTYtNy44MTYtMjAuNDcyLDAtMjguMjggICBsMTkzLjgzMi0xOTMuODMyYzcuODE2LTcuODE2LDIwLjQ3Mi03LjgxNiwyOC4yOCwwczcuODE2LDIwLjQ3MiwwLDI4LjI4TDE3NC42ODgsMzY1LjY4ICAgQzE3MC43ODQsMzY5LjU4NCwxNjUuNjY0LDM3MS41MzYsMTYwLjU0NCwzNzEuNTM2eiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+                                            width="20" height="20" id="vote" onclick="delete_(this)"
+                                            data-value="{{ task.task }}" data-points="{{ task.points }}" data-votes="{{ task.votes }}"/> &nbsp;</span>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                        <h4><i class="fas fa-check-circle" style="float: right"></i>Completed Tasks</h4>
+                        <hr style="border-color: darkslategrey">
+                        <div id="completed" style="">
+                            {% for task in tasks %}
+                                {% if task.type == "completed" and task.profile == user.get_full_name %}
+                                    <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px">
+                                        "{{ task.task }} [ {{ task.points }} ]" <span
+                                            style="font-style: italic">-{{ task.profile }}</span>
+                                        <br>
+                                        <span style="float: right; font-size: 19px; background-color: #00796B">&nbsp;({{ task.votes }}) &nbsp;<img
+                                                src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3OC4yIDQ3OC4yIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NzguMiA0NzguMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI2NHB4IiBoZWlnaHQ9IjY0cHgiPgo8Zz4KCTxwYXRoIGQ9Ik00NTcuNTc1LDMyNS4xYzkuOC0xMi41LDE0LjUtMjUuOSwxMy45LTM5LjdjLTAuNi0xNS4yLTcuNC0yNy4xLTEzLTM0LjRjNi41LTE2LjIsOS00MS43LTEyLjctNjEuNSAgIGMtMTUuOS0xNC41LTQyLjktMjEtODAuMy0xOS4yYy0yNi4zLDEuMi00OC4zLDYuMS00OS4yLDYuM2gtMC4xYy01LDAuOS0xMC4zLDItMTUuNywzLjJjLTAuNC02LjQsMC43LTIyLjMsMTIuNS01OC4xICAgYzE0LTQyLjYsMTMuMi03NS4yLTIuNi05N2MtMTYuNi0yMi45LTQzLjEtMjQuNy01MC45LTI0LjdjLTcuNSwwLTE0LjQsMy4xLTE5LjMsOC44Yy0xMS4xLDEyLjktOS44LDM2LjctOC40LDQ3LjcgICBjLTEzLjIsMzUuNC01MC4yLDEyMi4yLTgxLjUsMTQ2LjNjLTAuNiwwLjQtMS4xLDAuOS0xLjYsMS40Yy05LjIsOS43LTE1LjQsMjAuMi0xOS42LDI5LjRjLTUuOS0zLjItMTIuNi01LTE5LjgtNWgtNjEgICBjLTIzLDAtNDEuNiwxOC43LTQxLjYsNDEuNnYxNjIuNWMwLDIzLDE4LjcsNDEuNiw0MS42LDQxLjZoNjFjOC45LDAsMTcuMi0yLjgsMjQtNy42bDIzLjUsMi44YzMuNiwwLjUsNjcuNiw4LjYsMTMzLjMsNy4zICAgYzExLjksMC45LDIzLjEsMS40LDMzLjUsMS40YzE3LjksMCwzMy41LTEuNCw0Ni41LTQuMmMzMC42LTYuNSw1MS41LTE5LjUsNjIuMS0zOC42YzguMS0xNC42LDguMS0yOS4xLDYuOC0zOC4zICAgYzE5LjktMTgsMjMuNC0zNy45LDIyLjctNTEuOUM0NjEuMjc1LDMzNy4xLDQ1OS40NzUsMzMwLjIsNDU3LjU3NSwzMjUuMXogTTQ4LjI3NSw0NDcuM2MtOC4xLDAtMTQuNi02LjYtMTQuNi0xNC42VjI3MC4xICAgYzAtOC4xLDYuNi0xNC42LDE0LjYtMTQuNmg2MWM4LjEsMCwxNC42LDYuNiwxNC42LDE0LjZ2MTYyLjVjMCw4LjEtNi42LDE0LjYtMTQuNiwxNC42aC02MVY0NDcuM3ogTTQzMS45NzUsMzEzLjQgICBjLTQuMiw0LjQtNSwxMS4xLTEuOCwxNi4zYzAsMC4xLDQuMSw3LjEsNC42LDE2LjdjMC43LDEzLjEtNS42LDI0LjctMTguOCwzNC42Yy00LjcsMy42LTYuNiw5LjgtNC42LDE1LjRjMCwwLjEsNC4zLDEzLjMtMi43LDI1LjggICBjLTYuNywxMi0yMS42LDIwLjYtNDQuMiwyNS40Yy0xOC4xLDMuOS00Mi43LDQuNi03Mi45LDIuMmMtMC40LDAtMC45LDAtMS40LDBjLTY0LjMsMS40LTEyOS4zLTctMTMwLTcuMWgtMC4xbC0xMC4xLTEuMiAgIGMwLjYtMi44LDAuOS01LjgsMC45LTguOFYyNzAuMWMwLTQuMy0wLjctOC41LTEuOS0xMi40YzEuOC02LjcsNi44LTIxLjYsMTguNi0zNC4zYzQ0LjktMzUuNiw4OC44LTE1NS43LDkwLjctMTYwLjkgICBjMC44LTIuMSwxLTQuNCwwLjYtNi43Yy0xLjctMTEuMi0xLjEtMjQuOSwxLjMtMjljNS4zLDAuMSwxOS42LDEuNiwyOC4yLDEzLjVjMTAuMiwxNC4xLDkuOCwzOS4zLTEuMiw3Mi43ICAgYy0xNi44LDUwLjktMTguMiw3Ny43LTQuOSw4OS41YzYuNiw1LjksMTUuNCw2LjIsMjEuOCwzLjljNi4xLTEuNCwxMS45LTIuNiwxNy40LTMuNWMwLjQtMC4xLDAuOS0wLjIsMS4zLTAuMyAgIGMzMC43LTYuNyw4NS43LTEwLjgsMTA0LjgsNi42YzE2LjIsMTQuOCw0LjcsMzQuNCwzLjQsMzYuNWMtMy43LDUuNi0yLjYsMTIuOSwyLjQsMTcuNGMwLjEsMC4xLDEwLjYsMTAsMTEuMSwyMy4zICAgQzQ0NC44NzUsMjk1LjMsNDQwLjY3NSwzMDQuNCw0MzEuOTc1LDMxMy40eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+                                                width="20" height="20" id="vote" onclick="thumbsup(this)"
+                                                data-value="{{ task.task }}"/>&nbsp;&nbsp;<img
+                                                src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4Ni44MDUgNDg2LjgwNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDg2LjgwNSA0ODYuODA1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxnPgoJPHBhdGggZD0iTTQ4NS45LDI0MS40MDJsLTI2LjgtMTY3Yy01LjItNDEuOS0zNC41LTY2LTgwLjQtNjZIMjQzLjZoLTYuOGgtNjUuOWMtMTkuMiwwLTM2LjksOC4zLTQ5LjQsMjEuNiAgIGMtNC41LTUuNS0xMS40LTguOS0xOS04LjlIMjQuN2MtMTMuNiwwLTI0LjcsMTEuMS0yNC43LDI0Ljd2MjI4LjRjMCwxMy42LDExLjEsMjQuNywyNC43LDI0LjdoNzcuOWM5LDAsMTctNC45LDIxLjMtMTIuMmwyLjksMC43ICAgYzQuNCwxLjMsODAuOCwyNSw4MC44LDkwLjd2ODQuOWMwLDUuMiwzLjQsOS45LDguNCwxMS40YzAuOSwwLjMsMTIuOSw0LDI4LjMsNGMxMy4zLDAsMjkuMS0yLjcsNDIuNS0xMi42ICAgYzE4LjQtMTMuNSwyNy43LTM2LjUsMjcuNy02OC40di03NS44aDMyLjRoNTYuOWgxNS44YzE1LjYsMCwzMS01LjgsNDMuMy0xNi4yQzQ4MC45LDI5MC4wMDIsNDg5LjgsMjY1LjQwMiw0ODUuOSwyNDEuNDAyeiAgICBNMTAzLjIsMjc0LjMwMmMwLDAuNC0wLjMsMC43LTAuNywwLjdIMjQuN2MtMC40LDAtMC43LTAuMy0wLjctMC43di0yMjguNGMwLTAuNCwwLjMtMC43LDAuNy0wLjdoNzcuOWMwLjQsMCwwLjcsMC4zLDAuNywwLjcgICB2MjI4LjRIMTAzLjJ6IE00NDcuMywyODcuMjAyYy03LjksNi44LTE3LjgsMTAuNS0yNy43LDEwLjVoLTE1LjhoLTU2LjloLTQ0LjVjLTYuNiwwLTEyLDUuNC0xMiwxMnY4Ny44YzAsMjMuOC02LDQwLjMtMTcuOCw0OSAgIGMtMTMsOS42LTMwLjgsOC42LTQxLjEsN3YtNzUuM2MwLTM1LjYtMTcuMy02Ni43LTQ5LjktODkuOWMtMjMuOS0xNi45LTQ3LjYtMjMuNy00OC42LTI0Yy0wLjIsMC0wLjMtMC4xLTAuNS0wLjFsLTUuMi0xLjJ2LTE5MS41ICAgYzAuMi0wLjcsMC40LTEuNCwwLjUtMi4xYzMuMy0yMSwyMS44LTM2LjksNDMuMS0zNi45aDY1LjloNi44aDEzNS4xYzMzLjksMCw1Mi45LDE1LjIsNTYuNiw0NS4xYzAsMC4yLDAsMC4zLDAuMSwwLjRsMjYuOSwxNjcuMSAgIEM0NjQuOCwyNjEuMDAyLDQ1OSwyNzcuMTAyLDQ0Ny4zLDI4Ny4yMDJ6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="
+                                                width="20" height="20" id="vote" onclick="thumbsdown(this)"
+                                                data-value="{{ task.task }}"/> &nbsp;<img
+                                                src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGNpcmNsZSBzdHlsZT0iZmlsbDojRTIxQjFCOyIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNDNDA2MDY7IiBkPSJNNTEwLjI4LDI4NS4zMDRMMzY3LjkxMiwxNDIuOTM2TDE1MC4yNDgsMzY4LjYwOGwxNDAuOTI4LDE0MC45MjggIEM0MDYuMzUyLDQ5My42OTYsNDk3LjA1Niw0MDEuMjg4LDUxMC4yOCwyODUuMzA0eiIvPgo8Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMzU0LjM3NiwzNzEuNTM2Yy01LjEyLDAtMTAuMjMyLTEuOTUyLTE0LjE0NC01Ljg1NkwxNDYuNDA4LDE3MS44NDggICBjLTcuODE2LTcuODE2LTcuODE2LTIwLjQ3MiwwLTI4LjI4czIwLjQ3Mi03LjgxNiwyOC4yOCwwTDM2OC41MiwzMzcuNGM3LjgxNiw3LjgxNiw3LjgxNiwyMC40NzIsMCwyOC4yOCAgIEMzNjQuNjA4LDM2OS41ODQsMzU5LjQ5NiwzNzEuNTM2LDM1NC4zNzYsMzcxLjUzNnoiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMTYwLjU0NCwzNzEuNTM2Yy01LjEyLDAtMTAuMjMyLTEuOTUyLTE0LjE0NC01Ljg1NmMtNy44MTYtNy44MTYtNy44MTYtMjAuNDcyLDAtMjguMjggICBsMTkzLjgzMi0xOTMuODMyYzcuODE2LTcuODE2LDIwLjQ3Mi03LjgxNiwyOC4yOCwwczcuODE2LDIwLjQ3MiwwLDI4LjI4TDE3NC42ODgsMzY1LjY4ICAgQzE3MC43ODQsMzY5LjU4NCwxNjUuNjY0LDM3MS41MzYsMTYwLjU0NCwzNzEuNTM2eiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+                                                width="20" height="20" id="vote" onclick="delete_(this)"
+                                                data-value="{{ task.task }}"/> &nbsp;</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript">
+
+        {# Ajax Setup #}
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                let cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    let cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        let csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        {# End Ajax Setup #}
+
+        $("#add").on('click', function () {
+            location.href = "{% url 'home:profile_edit' %}"
+        });
+
+        function addtask() {
+            $('#createtask').slideToggle();
+            $('#taskpoint').slideUp();
+            $('#createbuttondiv').slideUp();
+        }
+
+        $('#titletext').on('keyup', function () {
+            $('#taskpoint').slideDown();
+        });
+
+        $('#pointstext').on('keyup', function () {
+            $('#createbuttondiv').slideDown();
+        });
+
+        function postStory() {
+            $.ajax({
+
+                url: '/home/profile/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    action: "create",
+                    profile: "{{ user.get_full_name }}",
+                    task: $('#titletext').val(),
+                    points: $('#pointstext').val()
+                },
+                success: function () {
+                    $('#to_do').load(document.URL + ' #to_do');
+                    $('#completed').load(document.URL + ' #completed');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    alert("Oh No!");
+                    console.log(errorThrown);
+                }
+
+            });
+        }
+
+        function thumbsup(el) {
+            let comment = $(el).attr('data-value');
+            $.ajax({
+                url: '/home/profile/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    "comment": comment,
+                    "action": "thumbsup"
+                },
+                success: function () {
+                    $('#to_do').load(document.URL + ' #to_do');
+                    $('#completed').load(document.URL + ' #completed');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+
+            });
+        }
+
+        function thumbsdown(el) {
+            let comment = $(el).attr('data-value');
+            $.ajax({
+                url: '/home/profile/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    "comment": comment,
+                    "action": "thumbsdown"
+                },
+                success: function () {
+                    $('#to_do').load(document.URL + ' #to_do');
+                    $('#completed').load(document.URL + ' #completed');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+
+            });
+        }
+
+        function delete_(el) {
+            let comment = $(el).attr('data-value');
+            $.ajax({
+                url: '/home/profile/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    "comment": comment,
+                    "action": "delete"
+                },
+                success: function () {
+                    $('#to_do').load(document.URL + ' #to_do');
+                    $('#completed').load(document.URL + ' #completed');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+
+            });
+        }
+
+        function complete_(el) {
+            let comment = $(el).attr('data-value');
+            let points = $(el).attr('data-points');
+            let votes = $(el).attr('data-votes');
+            $.ajax({
+                url: '/home/profile/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    "profile": "{{ user.get_full_name }}",
+                    "votes": votes,
+                    "points": points,
+                    "comment": comment,
+                    "action": "complete"
+                },
+                success: function () {
+                    $('#to_do').load(document.URL + ' #to_do');
+                    $('#completed').load(document.URL + ' #completed');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+
+            });
+        }
+
+        function edit(el) {
+            let comment = $(el).attr('data-value');
+            let newcomment = prompt("Edit the following:", comment);
+            if (newcomment != null) {
+                $.ajax({
+                    url: '/home/profile/',
+                    dataType: 'text',
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: dict = {
+                        "comment": comment,
+                        "newcomment": newcomment,
+                        "action": "edit"
+                    },
+                    success: function () {
+                        $('#to_do').load(document.URL + ' #to_do');
+                        $('#completed').load(document.URL + ' #completed');
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+
+                });
+            }
+        }
+
+    </script>
+{% endblock %}
