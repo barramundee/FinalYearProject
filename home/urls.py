@@ -3,16 +3,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import LoginView, LogoutView
 import home.views as home_views
 
 app_name = 'home'
 
 urlpatterns = [
-    path('', login, {'template_name': 'home/login.html'}),
+    path('', LoginView.as_view(), {'template_name': 'registration/login.html'}),
     path('home/', home_views.defaultpage, name="home"),
-    path('login/', login, {'template_name': 'home/login.html'}, name='login'),
-    path('logout/', logout, {'template_name': 'home/logout.html'}, name='logout'),
+    path('login/', LoginView.as_view(), {'template_name': 'registration/login.html'}, name='login'),
+    path('logout/', LogoutView.as_view(), {'template_name': 'registration/logged_out.html'}, name='logout'),
     path('register/', views.register, name='register'),
     path('homepage/', views.HomepageView.as_view(), name='homepage'),
     path('searchresults/', views.SearchResultsView.as_view(), name='searchresults'),
