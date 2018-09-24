@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Profile, Tasks
+from home.models import Profile, Tasks, NewsFeed
 
 # Register your models here.
 
@@ -18,6 +18,12 @@ class TaskAdmin(admin.ModelAdmin):
         'profile', 'task', 'type', 'points', 'votes'
     )
 
+class NewsFeedAdmin(admin.ModelAdmin):
+    list_display = (
+        'post', 'profile', 'created'
+    )
+
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Tasks, TaskAdmin)
+admin.site.register(NewsFeed, NewsFeedAdmin)

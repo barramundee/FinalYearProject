@@ -49,3 +49,17 @@ class Tasks(models.Model):
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
         ordering = ['-points', '-votes']
+
+
+class NewsFeed(models.Model):
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+
+    profile = models.CharField(max_length=255, default='')
+    post = models.CharField(max_length=255, default='')
+
+    class Meta:
+        verbose_name = 'News Feed'
+        verbose_name_plural = 'News Feed'
+        ordering = ['-created']
+
+

@@ -34,18 +34,19 @@
         }
     </style>
 
+    <body>
 
 {#    <h3 align="center"> <span style="margin-left: 8px;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"#}
 {#                                                                                     type="text"#}
 {#                                                                                     placeholder="&nbsp;Search">&nbsp;<i#}
 {#            id="searchbutton" class="fas fa-search add" style="color: #ccc"></i></span></h3>#}
     <h2 style="text-align: center; color: black"> Hi <span style="color: cornflowerblue">{{ user.first_name }}</span>, you have completed <span style="color: cornflowerblue">{{ user.profile.completedtasks }}</span> tasks today!</h2>
-    <div class="section-clear">
+    <div class="section-clear" style="text-align: center;">
         <div class="row">
             <div class="col-md-12 section">
                 <h3>News Feed</h3>
                 <hr>
-                     <h3 align="left"> <span style="margin-left: 0;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"
+                     <h3 style="text-align: center"> <span style="margin-left: 0; "><input name="searchbar" id="searchbar" size="50px"
                                                                                      type="text"
                                                                                      placeholder="&nbsp;Share an update">&nbsp;<i
             id="searchbutton" class="fas fa-check-circle add" style="color: #ccc"></i></span></h3>
@@ -56,6 +57,13 @@
                     {% endif %}
                 {% endfor %}
             </div>
+        <div class="section-clear">
+
+            <div class="col-md-12 section">
+            oioi
+            </div>
+
+        </div>
         </div>
     </div>
 
