@@ -6,10 +6,10 @@ from home.models import Profile, Tasks, NewsFeed
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = (
-        'user', 'bio'
+        'user', 'name', 'bio'
     )
 
-    list_filter = ('user', 'bio')
+    list_filter = ('user', 'name', 'bio')
     search_fields = ('user', 'bio')
 
 

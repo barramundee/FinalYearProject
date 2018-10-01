@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.shortcuts import redirect
-from .models import (Profile, Tasks)
+from .models import (User, Profile, Tasks)
 from django.template.response import TemplateResponse
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, RedirectView, TemplateView,
@@ -85,6 +85,13 @@ class ProfileView(TemplateView):
             Tasks.objects.create(task=r['comment'], type="completed", profile=r['profile'], points=r['points'],
                                  votes=r['votes'])
             vote.delete()
+
+            # User.Profile.completedtasks += 1
+            completed = Profile.objects.get(name=r['user'])
+            completed.completedtasks += 1
+            completed.save()
+
+
 
             return render(request, 'home/profile.html')
 

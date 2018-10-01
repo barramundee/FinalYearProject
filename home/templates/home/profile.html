@@ -293,6 +293,7 @@
             let comment = $(el).attr('data-value');
             let points = $(el).attr('data-points');
             let votes = $(el).attr('data-votes');
+
             $.ajax({
                 url: '/home/profile/',
                 dataType: 'text',
@@ -300,6 +301,7 @@
                 contentType: 'application/x-www-form-urlencoded',
                 data: dict = {
                     "profile": "{{ user.get_full_name }}",
+                    "user": "{{ user }}",
                     "votes": votes,
                     "points": points,
                     "comment": comment,

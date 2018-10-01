@@ -12,6 +12,7 @@ class Profile(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default='')
     bio = models.CharField(max_length=100, default='')
     jobtitle = models.CharField(max_length=100, default='')
     dob = models.DateField(("Date"), default=datetime.date.today)
@@ -25,7 +26,7 @@ class Profile(models.Model):
 
     def create_profile(sender, **kwargs):
         if kwargs['created']:
-            profile = Profile.objects.create(user=kwargs['instance'], bio="This is your Bio.",
+            profile = Profile.objects.create(user=kwargs['instance'], name=kwargs['instance'],bio="This is your Bio.",
                                              jobtitle="This is your Job Title.", dob=date.today(),
                                              profilepic='profile_image/default.png')
 
