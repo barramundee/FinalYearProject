@@ -57,6 +57,7 @@ class NewsFeed(models.Model):
 
     profile = models.CharField(max_length=255, default='')
     post = models.CharField(max_length=255, default='')
+    post_id = models.AutoField(primary_key=True)
 
     class Meta:
         verbose_name = 'News Feed'

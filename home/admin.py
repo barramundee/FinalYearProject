@@ -20,7 +20,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 class NewsFeedAdmin(admin.ModelAdmin):
     list_display = (
-        'post', 'profile', 'created'
+        'post_id',  'post', 'profile', 'created'
     )
 
 
