@@ -89,8 +89,10 @@
                 <span style="float: right">
                     {% if request.user.is_authenticated %}
                         <span style=" font-weight: 300 !important; font-family: 'Arial', serif; font-size: 14px; color: white;"
-                        ><i style="color: #FFF !important;" class="fas fa-1x fa-user"></i> &nbsp;{{ user.first_name|title }} {{ user.last_name|title }}</span>
-                         <a href="{% url 'home:logout' %}" style="margin-left: 60px">
+                        ><i style="color: #FFF !important;" class="fas fa-1x fa-user"></i> &nbsp;{{ user.first_name|title }} {{ user.last_name|title }}&nbsp;&nbsp;&nbsp;
+                        <i style="color: #FFF !important;" class="fas fa-1x fa-project-diagram"></i> &nbsp;{{ user.profile.team|title }}
+                        </span>
+                         <a href="{% url 'home:logout' %}" style="margin-left: 30px">
                            <i style="color: #FFF !important;" class="fas fa-sign-out-alt"></i>
                         </a>
                     {% else %}

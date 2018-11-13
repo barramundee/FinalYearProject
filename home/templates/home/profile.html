@@ -29,20 +29,21 @@
 
                 <div class="col-md-2">
                     {% if user.profile.profilepic.url %}
-                        <img src="{{ user.profile.profilepic.url }}" width="140">
+                        <img style="float: left" src="{{ user.profile.profilepic.url }}" width="200">
                     {% else %}
                         <img src=" " width="140">
                     {% endif %}
                 </div>
 
                 <div class="col-md-10">
-                    <h3>{{ user.first_name }} {{ user.last_name }} ({{ user.profile.age }})<span
-                            style="color: black; font-style: italic"> {{ user.profile.jobtitle }}</span><span
+                    <h3>{{ user.first_name }} {{ user.last_name }} ({{ user.profile.age }}) &nbsp; <i style=" !important;" class="fas fa-1x fa-project-diagram"></i> &nbsp;{{ user.profile.team|title }}
+                        <span
                             style="float: right"><img id="add"
                                                       src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU1LjI1IDU1LjI1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1NS4yNSA1NS4yNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIxMjhweCIgaGVpZ2h0PSIxMjhweCI+CjxwYXRoIGQ9Ik01Mi42MTgsMi42MzFjLTMuNTEtMy41MDgtOS4yMTktMy41MDgtMTIuNzI5LDBMMy44MjcsMzguNjkzQzMuODEsMzguNzEsMy44LDM4LjczMSwzLjc4NSwzOC43NDkgIGMtMC4wMjEsMC4wMjQtMC4wMzksMC4wNS0wLjA1OCwwLjA3NmMtMC4wNTMsMC4wNzQtMC4wOTQsMC4xNTMtMC4xMjUsMC4yMzljLTAuMDA5LDAuMDI2LTAuMDIyLDAuMDQ5LTAuMDI5LDAuMDc1ICBjLTAuMDAzLDAuMDEtMC4wMDksMC4wMi0wLjAxMiwwLjAzbC0zLjUzNSwxNC44NWMtMC4wMTYsMC4wNjctMC4wMiwwLjEzNS0wLjAyMiwwLjIwMkMwLjAwNCw1NC4yMzQsMCw1NC4yNDYsMCw1NC4yNTkgIGMwLjAwMSwwLjExNCwwLjAyNiwwLjIyNSwwLjA2NSwwLjMzMmMwLjAwOSwwLjAyNSwwLjAxOSwwLjA0NywwLjAzLDAuMDcxYzAuMDQ5LDAuMTA3LDAuMTEsMC4yMSwwLjE5NiwwLjI5NiAgYzAuMDk1LDAuMDk1LDAuMjA3LDAuMTY4LDAuMzI4LDAuMjE4YzAuMTIxLDAuMDUsMC4yNSwwLjA3NSwwLjM3OSwwLjA3NWMwLjA3NywwLDAuMTU1LTAuMDA5LDAuMjMxLTAuMDI3bDE0Ljg1LTMuNTM1ICBjMC4wMjctMC4wMDYsMC4wNTEtMC4wMjEsMC4wNzctMC4wM2MwLjAzNC0wLjAxMSwwLjA2Ni0wLjAyNCwwLjA5OS0wLjAzOWMwLjA3Mi0wLjAzMywwLjEzOS0wLjA3NCwwLjIwMS0wLjEyMyAgYzAuMDI0LTAuMDE5LDAuMDQ5LTAuMDMzLDAuMDcyLTAuMDU0YzAuMDA4LTAuMDA4LDAuMDE4LTAuMDEyLDAuMDI2LTAuMDJsMzYuMDYzLTM2LjA2M0M1Ni4xMjcsMTEuODUsNTYuMTI3LDYuMTQsNTIuNjE4LDIuNjMxeiAgIE01MS4yMDQsNC4wNDVjMi40ODgsMi40ODksMi43LDYuMzk3LDAuNjUsOS4xMzdsLTkuNzg3LTkuNzg3QzQ0LjgwOCwxLjM0NSw0OC43MTYsMS41NTcsNTEuMjA0LDQuMDQ1eiBNNDYuMjU0LDE4Ljg5NWwtOS45LTkuOSAgbDEuNDE0LTEuNDE0bDkuOSw5LjlMNDYuMjU0LDE4Ljg5NXogTTQuOTYxLDUwLjI4OGMtMC4zOTEtMC4zOTEtMS4wMjMtMC4zOTEtMS40MTQsMEwyLjc5LDUxLjA0NWwyLjU1NC0xMC43MjhsNC40MjItMC40OTEgIGwtMC41NjksNS4xMjJjLTAuMDA0LDAuMDM4LDAuMDEsMC4wNzMsMC4wMSwwLjExYzAsMC4wMzgtMC4wMTQsMC4wNzItMC4wMSwwLjExYzAuMDA0LDAuMDMzLDAuMDIxLDAuMDYsMC4wMjgsMC4wOTIgIGMwLjAxMiwwLjA1OCwwLjAyOSwwLjExMSwwLjA1LDAuMTY1YzAuMDI2LDAuMDY1LDAuMDU3LDAuMTI0LDAuMDk1LDAuMTgxYzAuMDMxLDAuMDQ2LDAuMDYyLDAuMDg3LDAuMSwwLjEyNyAgYzAuMDQ4LDAuMDUxLDAuMSwwLjA5NCwwLjE1NywwLjEzNGMwLjA0NSwwLjAzMSwwLjA4OCwwLjA2LDAuMTM4LDAuMDg0QzkuODMxLDQ1Ljk4Miw5LjksNDYsOS45NzIsNDYuMDE3ICBjMC4wMzgsMC4wMDksMC4wNjksMC4wMywwLjEwOCwwLjAzNWMwLjAzNiwwLjAwNCwwLjA3MiwwLjAwNiwwLjEwOSwwLjAwNmMwLDAsMC4wMDEsMCwwLjAwMSwwYzAsMCwwLjAwMSwwLDAuMDAxLDBoMC4wMDEgIGMwLDAsMC4wMDEsMCwwLjAwMSwwYzAuMDM2LDAsMC4wNzMtMC4wMDIsMC4xMDktMC4wMDZsNS4xMjItMC41NjlsLTAuNDkxLDQuNDIyTDQuMjA0LDUyLjQ1OWwwLjc1Ny0wLjc1NyAgQzUuMzUxLDUxLjMxMiw1LjM1MSw1MC42NzksNC45NjEsNTAuMjg4eiBNMTcuNTExLDQ0LjgwOUwzOS44ODksMjIuNDNjMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNHMtMS4wMjMtMC4zOTEtMS40MTQsMCAgTDE2LjA5Nyw0My4zOTVsLTQuNzczLDAuNTNsMC41My00Ljc3M2wyMi4zOC0yMi4zNzhjMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNHMtMS4wMjMtMC4zOTEtMS40MTQsMEwxMC40NCwzNy43MzggIGwtMy4xODMsMC4zNTRMMzQuOTQsMTAuNDA5bDkuOSw5LjlMMTcuMTU3LDQ3Ljk5MkwxNy41MTEsNDQuODA5eiBNNDkuMDgyLDE2LjA2N2wtOS45LTkuOWwxLjQxNS0xLjQxNWw5LjksOS45TDQ5LjA4MiwxNi4wNjd6IiBmaWxsPSIjMDAwMDAwIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
                                                       width="18" style="margin-right: 30px"/></span></h3>
                     <hr>
-                    {{ user.profile.bio }}
+                    <span
+                            style="color: black; font-style: italic"> {{ user.profile.jobtitle }}</span> , {{ user.profile.bio }}
                 </div>
             </div>
         </div>

@@ -5,8 +5,21 @@ import datetime
 from datetime import date
 
 
+
 # Create your models here.
 
+class Teams(models.Model):
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+
+    teamname = models.CharField(max_length=255)
+    agilemethodology = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.teamname
+
+    class Meta:
+        verbose_name = 'Team'
+        verbose_name_plural = 'Teams'
 
 class Profile(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -19,6 +32,10 @@ class Profile(models.Model):
     age = models.IntegerField(default=0)
     completedtasks = models.IntegerField(default=0)
     profilepic = models.ImageField(upload_to='profile_image', blank=True)
+    team = models.ForeignKey(Teams, related_name='team_user_set', default=None, blank=True, null=True,
+                             on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Profile'
@@ -46,6 +63,9 @@ class Tasks(models.Model):
     points = models.IntegerField(default=0, help_text='Story Points')
     votes = models.IntegerField(default=0, help_text='')
 
+    def __str__(self):
+        return self.task
+
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
@@ -58,6 +78,9 @@ class NewsFeed(models.Model):
     profile = models.CharField(max_length=255, default='')
     post = models.CharField(max_length=255, default='')
     post_id = models.AutoField(primary_key=True)
+
+    def __str__(self):
+        return self.post
 
     class Meta:
         verbose_name = 'News Feed'

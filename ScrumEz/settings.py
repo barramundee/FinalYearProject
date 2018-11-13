@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'home',
+    'squads',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'path.to.your.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'ScrumEz.urls'
@@ -140,4 +142,4 @@ LOGIN_REDIRECT_URL = '/home/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "ScrumEz/media/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "ScrumEz/media")

@@ -143,6 +143,9 @@ def edit_profile(request):
 #         args = {'form': form}
 #         return render(request, 'home/create_task.html', args)
 
+def get_user_profile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'home/user_profile.html', {"user":user})
 
 def defaultpage(request):
     return redirect('/homepage')

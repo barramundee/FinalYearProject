@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Profile, Tasks, NewsFeed
+from home.models import Profile, Tasks, NewsFeed, Teams
 
 # Register your models here.
 
@@ -23,7 +23,12 @@ class NewsFeedAdmin(admin.ModelAdmin):
         'post_id',  'post', 'profile', 'created'
     )
 
+class TeamsAdmin(admin.ModelAdmin):
+    list_display = (
+        'teamname', 'agilemethodology'
+    )
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Tasks, TaskAdmin)
 admin.site.register(NewsFeed, NewsFeedAdmin)
+admin.site.register(Teams, TeamsAdmin)
