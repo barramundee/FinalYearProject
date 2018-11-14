@@ -1,0 +1,68 @@
+{% extends 'home/dashboard.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/poker.css' %}">
+
+    <style>
+
+        {#    div {#}
+        {#    width: 30%;#}
+        {#    padding-bottom: 30%; /* = width for a square aspect ratio */#}
+
+        .square {
+            float: left;
+            position: relative;
+            width: 20%;
+            padding-bottom: 9%; /* = width for a 1:1 aspect ratio */
+            margin: 0%;
+            overflow: hidden;
+        }
+
+        .content {
+            position: absolute;
+            height: 100%; /* = 100% - 2*10% padding */
+            width: 100%; /* = 100% - 2*5% padding */
+            padding: 0% 2%;
+        }
+
+        .table {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .table-cell {
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
+            width: 100%;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block secondary %}
+    <body>
+
+    <div class="section">
+        <center><h1>{{ team }}</h1>
+            <hr>
+            <h3>{{ team.agilemethodology }}</h3></center>
+            <h3>People in team: {% if user.profile.team == team %}{{ user.get_full_name }}{% endif %}</h3>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript">
+
+    </script>
+{% endblock %}

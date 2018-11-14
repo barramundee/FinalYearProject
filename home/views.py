@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.shortcuts import redirect
-from .models import (User, Profile, Tasks)
+from .models import (User, Profile, Tasks, Teams)
 from django.template.response import TemplateResponse
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, RedirectView, TemplateView,
@@ -11,6 +11,8 @@ from django.views.decorators.csrf import requires_csrf_token
 from home.forms import Registration, EditProfile
 from django.db.models import Q
 from django.core.paginator import Paginator
+
+
 # Create your views here.
 
 
@@ -42,6 +44,36 @@ class SearchResultsView(TemplateView):
     template_name = 'home/searchresults.html'
 
 
+class TeamViews(TemplateView):
+    template_name = 'home/teams.html'
+
+    def get(self, request):
+        teams = Teams.objects.all()
+        args = {'teams': teams}
+        return render(request, 'home/teams.html', args)
+
+    @requires_csrf_token
+    def my_view(request):
+        c = {}
+        # ...
+        return render(request, 'home/teams.html', c)
+
+
+class TeamHomeViews(TemplateView):
+    template_name = 'home/teamhome.html'
+
+    def get(self, request):
+        teams = Teams.objects.all()
+        args = {'teams': teams}
+        return render(request, 'home/teamhome.html', args)
+
+    @requires_csrf_token
+    def my_view(request):
+        c = {}
+        # ...
+        return render(request, 'home/teamhome.html', c)
+
+
 class ProfileView(TemplateView):
     template_name = 'home/profile.html'
     model = Profile
@@ -55,7 +87,7 @@ class ProfileView(TemplateView):
         action = request.POST.get('action', '')
 
         if action == 'create':
-            Tasks.objects.create(profile=p['profile'], task=p['task'], type="todo", points=p['points'])
+            Tasks.objects.create(profile=p['profile'], username=p['user'], task=p['task'], type="todo", points=p['points'])
             return render(request, 'home/profile.html')
 
         if action == 'thumbsup':
@@ -74,7 +106,7 @@ class ProfileView(TemplateView):
 
         if action == 'delete':
             r = request.POST
-            vote = Tasks.objects.get(task=r['comment'])
+            vote = Tasks.objects.get(task=r['comment'], username=r['user'], points=r['points'])
             vote.delete()
 
             return render(request, 'home/profile.html')
@@ -82,7 +114,7 @@ class ProfileView(TemplateView):
         if action == 'complete':
             r = request.POST
             vote = Tasks.objects.get(task=r['comment'])
-            Tasks.objects.create(task=r['comment'], type="completed", profile=r['profile'], points=r['points'],
+            Tasks.objects.create(task=r['comment'], type="completed", username=r['user'], profile=r['profile'], points=r['points'],
                                  votes=r['votes'])
             vote.delete()
 
@@ -90,8 +122,6 @@ class ProfileView(TemplateView):
             completed = Profile.objects.get(name=r['user'])
             completed.completedtasks += 1
             completed.save()
-
-
 
             return render(request, 'home/profile.html')
 
@@ -145,7 +175,14 @@ def edit_profile(request):
 
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
-    return render(request, 'home/user_profile.html', {"user":user})
+    tasks = Tasks.objects.filter(username=username)
+    return render(request, 'home/user_profile.html', {"user": user, "tasks": tasks})
+
+
+def get_team_name(request, teamname):
+    teamname = Teams.objects.get(teamname=teamname)
+    return render(request, 'home/teamhome.html', {"team": teamname})
+
 
 def defaultpage(request):
     return redirect('/homepage')

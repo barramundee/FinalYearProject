@@ -19,5 +19,8 @@ urlpatterns = [
     path('searchresults/', views.SearchResultsView.as_view(), name='searchresults'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/edit/', views.edit_profile, name='profile_edit'),
-    path('profile/(?P<username>[a-zA-Z0-9]+)$', views.get_user_profile),
+    path('teams/', views.TeamViews.as_view(), name='teams'),
+    path('teamhome/', views.TeamHomeViews.as_view(), name='teamhome'),
+    url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.get_user_profile),
+    url(r'teams/(?P<teamname>[a-zA-Z0-9]+)$', views.get_team_name),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

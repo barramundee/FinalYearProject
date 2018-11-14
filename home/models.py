@@ -58,6 +58,7 @@ class Tasks(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     profile = models.CharField(max_length=255, default='')
+    username = models.CharField(max_length=255, default='')
     task = models.CharField(max_length=255, default='')
     type = models.CharField(max_length=100, default='', help_text='todo, completed')
     points = models.IntegerField(default=0, help_text='Story Points')

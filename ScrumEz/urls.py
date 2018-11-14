@@ -27,7 +27,9 @@ urlpatterns = [
 
     path('', views.login_redirect, name='login_redirect'),
     path('', include('home.urls')),
+    path('user/', include('home.urls')),
+    path('team/', include('home.urls')),
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
-    path('user/', include('home.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

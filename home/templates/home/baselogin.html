@@ -1,7 +1,7 @@
 {% spaceless %}
     <!DOCTYPE html>
     <html lang="en">
-
+{% load static %}
     <head>
         {% load static %}
 
@@ -38,8 +38,8 @@
         {% block head %} {% endblock %}
 
         <!-- Fav Icon -->
-        <link rel="icon" href="{% static '/icons/potion.png' %}">
-        <title>ScrumEz {% block title %}{% endblock %}</title>
+        <link rel="icon" href="{% static '/icons/circle.png' %}">
+        <title>Nimbly {% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/okr.css' %}"/>
 
     </head>
