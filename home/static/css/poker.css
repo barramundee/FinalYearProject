@@ -373,6 +373,61 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
+.pink-section{
+    background: lightpink;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+.purple-section{
+
+    background: rebeccapurple;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+.bouncy{
+    animation: bouncy 5s infinite linear;
+    position: relative;
+}
+
+@keyframes bouncy {
+    0%{top:0em}
+    40%{top:0em}
+    43%{top:-0.9em}
+    46%{top:0em}
+    48%{top:-0.4em}
+    50%{top:0em}
+    100%{top:0em;}
+}
+
+.yesno{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+    -webkit-border-radius: 5px;
+}
+.yesno:hover{
+    background-color:#4095c6;
+}
+@media all and (max-width:30em){
+ .yesno{
+    display:block;
+    margin:0.2em auto;
+    }
+}
+
 #vote:hover {
             color: dodgerblue;
             cursor: pointer;

@@ -36,35 +36,41 @@
 
     <body>
 
-{#    <h3 align="center"> <span style="margin-left: 8px;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"#}
-{#                                                                                     type="text"#}
-{#                                                                                     placeholder="&nbsp;Search">&nbsp;<i#}
-{#            id="searchbutton" class="fas fa-search add" style="color: #ccc"></i></span></h3>#}
-    <h2 style="text-align: center; color: black"> Hi <span style="color: cornflowerblue">{{ user.first_name }}</span>, you have completed <span style="color: cornflowerblue">{{ user.profile.completedtasks }}</span> tasks today!</h2>
+    {#    <h3 align="center"> <span style="margin-left: 8px;">Search for colleagues: <input name="searchbar" id="searchbar" size="50px"#}
+    {#                                                                                     type="text"#}
+    {#                                                                                     placeholder="&nbsp;Search">&nbsp;<i#}
+    {#            id="searchbutton" class="fas fa-search add" style="color: #ccc"></i></span></h3>#}
+    <h2 style="text-align: center; color: black"> Hi <span style="color: cornflowerblue">{{ user.first_name }}</span>,
+        you have completed <span style="color: cornflowerblue">{{ user.profile.completedtasks }}</span> tasks today!
+    </h2>
     <div class="section-clear" style="text-align: center;">
         <div class="row">
             <div class="col-md-12 section">
                 <h3>News Feed</h3>
                 <hr>
-                     <h3 style="text-align: center"> <span style="margin-left: 0; "><input name="searchbar" id="searchbar" size="50px"
-                                                                                     type="text"
-                                                                                     placeholder="&nbsp;Share an update">&nbsp;<i
-            id="searchbutton" class="fas fa-check-circle add" style="color: #ccc"></i></span></h3>
+                <h3 style="text-align: center"> <span style="margin-left: 0; "><input name="searchbar" id="searchbar"
+                                                                                      size="50px"
+                                                                                      type="text"
+                                                                                      placeholder="&nbsp;Share an update">&nbsp;<i
+                        id="searchbutton" class="fas fa-check-circle add" style="color: #ccc"></i></span></h3>
 
-                {% for task in tasks %}
-                    {% if task.type == "todo" %}
-                        {{ task.task }}
-                    {% endif %}
-                {% endfor %}
 
             </div>
-        <div class="section-clear">
+            <div class="section-clear">
 
-            <div class="col-md-12 section">
-            oioi
+                <div class="col-md-12 section">
+            <span id="posts">
+            {% for newsfeed in NewsFeed %}
+
+
+                 {{ newsfeed.post }}
+
+
+            {% endfor %}
+            </span>
+                </div>
+
             </div>
-
-        </div>
         </div>
     </div>
 
@@ -74,18 +80,90 @@
 
 {% block script %}
     <script language="JavaScript">
+        {# Ajax Setup #}
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                let cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    let cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        let csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        {# End Ajax Setup #}
 
         $("#searchbar").on('keyup', function (e) {
             if (e.keyCode === 13) {
                 let search = $("#searchbar").val();
-                alert(search)
+                $.ajax({
+                    url: '/home/homepage/',
+                    dataType: 'text',
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: dict = {
+                        action: "post",
+                        profile: "{{ user.get_full_name }}",
+                        post: search,
+                    },
+                    success: function () {
+                        $('#posts').load(document.URL + ' #posts');
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        alert("Oh No!");
+                        console.log(errorThrown);
+                    }
+
+                });
             }
         });
 
-        $('#searchbutton').on('click', function (e) {
-                let search = $("#searchbar").val();
-                alert(search)
+        $('#searchbutton').on('click', function () {
+            let search = $("#searchbar").val();
+            $.ajax({
+                url: '/home/homepage/',
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: dict = {
+                    action: "post",
+                    profile: "{{ user.get_full_name }}",
+                    post: search,
+                },
+                success: function () {
+                    $('#posts').load(document.URL + ' #posts');
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    alert("Oh No!");
+                    console.log(errorThrown);
+                }
+            });
         });
+
 
     </script>
 {% endblock %}

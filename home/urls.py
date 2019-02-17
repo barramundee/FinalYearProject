@@ -21,6 +21,8 @@ urlpatterns = [
     path('profile/edit/', views.edit_profile, name='profile_edit'),
     path('teams/', views.TeamViews.as_view(), name='teams'),
     path('teamhome/', views.TeamHomeViews.as_view(), name='teamhome'),
+    path('agilepicker/', views.AgilePickerView.as_view(), name='agilepicker'),
     url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.get_user_profile),
-    url(r'teams/(?P<teamname>[a-zA-Z0-9]+)$', views.get_team_name),
+    # url(r'teams/(?P<teamname>[a-zA-Z0-9]+)$', views.get_team_name),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

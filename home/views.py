@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.shortcuts import redirect
-from .models import (User, Profile, Tasks, Teams)
+from .models import (User, Profile, Tasks, Teams, NewsFeed)
 from django.template.response import TemplateResponse
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, RedirectView, TemplateView,
@@ -19,6 +19,19 @@ from django.core.paginator import Paginator
 def homepage(request):
     return render(request, 'home/homepage.html')
 
+class AgilePickerView(TemplateView):
+    template_name = 'home/agile_picker.html'
+
+    # def get(self, request):
+    #     teams = Teams.objects.all()
+    #     args = {'teams': teams}
+    #     return render(request, 'home/agilepicker.html', args)
+
+    @requires_csrf_token
+    def my_view(request):
+        c = {}
+        # ...
+        return render(request, 'home/agile_picker.html', c)
 
 class HomepageView(TemplateView):
     template_name = 'home/homepage.html'
@@ -28,9 +41,18 @@ class HomepageView(TemplateView):
         args = {'user': request.user}
         return render(request, 'home/homepage.html', args)
 
+    def post(self, request):
+        p = request.POST
+        action = request.POST.get('action', '')
+
+        if action == 'post':
+            NewsFeed.objects.create(post=p['post'], profile=p['profile'])
+            return render(request, 'home/homepage.html')
+
+
     def get(self, request):
-        tasks = Tasks.objects.all()
-        args = {'tasks': tasks}
+        newsfeed = NewsFeed.objects.all()
+        args = {'NewsFeed': newsfeed}
         return render(request, 'home/homepage.html', args)
 
     @requires_csrf_token
