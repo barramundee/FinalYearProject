@@ -15,33 +15,246 @@
     <html>
     <head>
         <link rel="stylesheet" href="{% static 'css/poker.css' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
 
     <style>
-
     </style>
     <body>
 
     <div class="section">
         <center><h1>Agile Picker</h1>
             <hr>
-            <h4>Scrum • Kanban • XP • Lean • Pace • Crystal</h4>
+            <h4><span data-toggle="modal" data-target="#Scrum" id="vote">Scrum</span> • <span data-toggle="modal"
+                                                                                              data-target="#Kanban"
+                                                                                              id="vote">Kanban</span> •
+                <span data-toggle="modal" data-target="#XP" id="vote">XP</span> • <span data-toggle="modal"
+                                                                                        data-target="#Lean" id="vote">Lean</span>
+                • <span data-toggle="modal"
+                        data-target="#Crystal"
+                        id="vote">Crystal</span>
+            </h4>
         </center>
     </div>
 
     <div>
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center" ><br>Are Requirements clearly defined?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> {# Scrum #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center "><br>Are changes during the development probable to happen?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> {# Scrum #}
-        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will there be a need to test the solution?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> {# Scrum #}
-        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will the Product Owner be fully available?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> {# Scrum #}
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Is the Client's culture open to innovation?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> > {# Scrum #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will your project have big release goals or milestones?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div>  {# Scrum #}
-        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Progress and Planning or Flow and Throughput?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div> {# Scrum vs Kanban #}
-        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Iterations or Work States?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div>  {# Scrum vs Kanban #}
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will you want a flexible methodology?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div>  {# Kanban #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will your work consist of small pieces, defect fixes or small enhancement requests?<br><br><button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button><button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s" >No</button></div>  {# Kanban #}
+
+        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Are
+            Requirements clearly defined?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum #}
+        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center "><br>Are
+            changes during the development probable to happen?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum #}
+        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
+            there be a need to test the solution?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum #}
+        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
+            the Product Owner be fully available?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum #}
+        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Is the
+            Client's culture open to innovation?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        > {# Scrum #}
+        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
+            your project have big release goals or milestones?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum #}
+        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Progress
+            and Planning or Flow and Throughput?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum vs Kanban #}
+        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Iterations
+            or Work States?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Scrum vs Kanban #}
+        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will you
+            want a flexible methodology?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Kanban #}
+        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
+            your work consist of small pieces, defect fixes or small enhancement requests?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+        {# Kanban #}
     </div>
+
+    <div class="container">
+        <!-- Trigger the modal with a button -->
+        {#  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>#}
+
+        <!-- Modal -->
+        <div class="modal fade" id="Scrum" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Scrum Methodology</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Scrum is an agile project management methodology or framework used primarily for software
+                            development projects with the goal of delivering new software capability every 2-4 weeks. It
+                            is one of the approaches that influenced the Agile Manifesto, which articulates a set of
+                            values and principles to guide decisions on how to develop higher-quality software
+                            faster.</p>
+                        <a href="https://www.scrum.org/" target="_blank" style="float: right">https://www.scrum.org/</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="Kanban" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Kanban Methodology</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Kanban is a method for managing the creation of products with an emphasis on continual
+                            delivery while not overburdening the development team. Like Scrum, Kanban is a process
+                            designed to help teams work together more effectively.</p>
+                        <a href="https://www.atlassian.com/agile/kanban/" target="_blank" style="float: right">https://www.atlassian.com/agile/kanban/</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="XP" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Extreme Programming</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Extreme Programming (XP) is an agile software development framework that aims to produce
+                            higher quality software, and higher quality of life for the development team. XP is the most
+                            specific of the agile frameworks regarding appropriate engineering practices for software
+                            development.
+                        </p>
+                        <a href="http://www.extremeprogramming.org/" target="_blank" style="float: right">http://www.extremeprogramming.org/</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="Lean" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Lean Methodoloy</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>A lean organization understands customer value and focuses its key processes to continuously
+                            increase it. The ultimate goal is to provide perfect value to the customer through a perfect
+                            value creation process that has zero waste. To accomplish this, lean thinking changes the
+                            focus of management from optimizing separate technologies, assets, and vertical departments
+                            to optimizing the flow of products and services through entire value streams that flow
+                            horizontally across technologies, assets, and departments to customers.
+                        </p>
+                        <a href="https://www.lean.org/" target="_blank" style="float: right">https://www.lean.org/</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="Crystal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Crystal Methodoloy</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>The fact that Crystal uses a focus on people and communication as its organizing principle is
+                            what distinguishes it from other software development methods. Unlike other agile
+                            methodologies, Crystal focuses on adjusting the techniques used in a project with the aim to
+                            strengthen the process of team communication.
+                        </p>
+                        <a href=https://activecollab.com/blog/project-management/crystal-methods" target="_blank" style="float: right">https://activecollab.com/blog/project-management/crystal-methods</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
     </body>
+
+
     </html>
 {% endblock %}
 
