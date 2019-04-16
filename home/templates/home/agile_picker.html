@@ -42,75 +42,146 @@
 
     <div>
 
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Are
+        <div id="scrum1" class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center">
+            <br>Are
             Requirements clearly defined?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum1()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeslean1()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="scrum2" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is work
+            based on iterations?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum2()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeskanban1()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="scrum3" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will your work
+            have big release goals?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum3()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeskanban4()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="scrum4" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is success defined by
+            responsiveness to customer requests?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum4()">Yes</button>
             <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
             </button>
         </div>
+
+        <div id="scrum5" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will your team work in
+            sprints?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum5()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban1" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is work based on work
+            states?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban2()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban2" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will work be based on
+            repetitive tasks?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban3()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban3" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is your work based on
+            small incoming pieces of work?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban3()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="lean1" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is your project customer
+            service based?<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center "><br>Are#}
+        {#            changes during the development probable to happen?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center "><br>Are
-            changes during the development probable to happen?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
+        {#            there be a need to test the solution?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum #}
-        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
-            there be a need to test the solution?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
+        {#            the Product Owner be fully available?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum #}
-        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
-            the Product Owner be fully available?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Is the#}
+        {#            Client's culture open to innovation?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
+        {#        > {# Scrum #}
+        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
+        {#            your project have big release goals or milestones?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum #}
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Is the
-            Client's culture open to innovation?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
-        > {# Scrum #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
-            your project have big release goals or milestones?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
-        {# Scrum #}
-        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Progress
-            and Planning or Flow and Throughput?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Progress#}
+        {#            and Planning or Flow and Throughput?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum vs Kanban #}
-        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Iterations
-            or Work States?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Iterations#}
+        {#            or Work States?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Scrum vs Kanban #}
-        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will you
-            want a flexible methodology?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will you#}
+        {#            want a flexible methodology?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Kanban #}
-        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will
-            your work consist of small pieces, defect fixes or small enhancement requests?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
-            </button>
-        </div>
+        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
+        {#            your work consist of small pieces, defect fixes or small enhancement requests?<br><br>#}
+        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
+        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
+        {#            </button>#}
+        {#        </div>#}
         {# Kanban #}
     </div>
 
@@ -238,7 +309,8 @@
                             methodologies, Crystal focuses on adjusting the techniques used in a project with the aim to
                             strengthen the process of team communication.
                         </p>
-                        <a href=https://activecollab.com/blog/project-management/crystal-methods" target="_blank" style="float: right">https://activecollab.com/blog/project-management/crystal-methods</a>
+                        <a href=https://activecollab.com/blog/project-management/crystal-methods" target="_blank"
+                           style="float: right">https://activecollab.com/blog/project-management/crystal-methods</a>
                         <br>
                     </div>
                     <div class="modal-footer">
@@ -260,6 +332,52 @@
 
 {% block script %}
     <script language="JavaScript">
+        function yesscrum1() {
+            $('#scrum1').slideToggle("slow");
+            $('#scrum2').slideToggle("slow");
+        }
 
+        function yesscrum2() {
+            $('#scrum2').slideToggle("slow");
+            $('#scrum3').slideToggle("slow");
+        }
+
+        function yesscrum3() {
+            $('#scrum3').slideToggle("slow");
+            $('#scrum4').slideToggle("slow");
+        }
+
+        function yesscrum4() {
+            $('#scrum4').slideToggle("slow");
+            $('#scrum5').slideToggle("slow");
+        }
+
+        function yesscrum5() {
+            alert("Scrum")
+        }
+
+        function yeslean1() {
+            $('#lean1').slideToggle("slow");
+            $('#scrum1').slideToggle("slow");
+        }
+
+        function yeskanban1() {
+            $('#scrum2').slideToggle("slow");
+            $('#kanban1').slideToggle("slow");
+        }
+
+        function yeskanban2() {
+            $('#kanban1').slideToggle("slow");
+            $('#kanban2').slideToggle("slow");
+        }
+
+        function yeskanban3() {
+            alert("SCRUM / Kanban")
+        }
+
+        function yeskanban4() {
+            $('#scrum3').slideToggle("slow");
+            $('#kanban3').slideToggle("slow");
+        }
     </script>
 {% endblock %}

@@ -380,6 +380,13 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
+.orange-section{
+    background: orange;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
 .purple-section{
 
     background: rebeccapurple;
