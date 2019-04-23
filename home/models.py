@@ -23,7 +23,6 @@ class Teams(models.Model):
 
 class Profile(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
-
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='')
     bio = models.CharField(max_length=100, default='')
