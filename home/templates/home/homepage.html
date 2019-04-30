@@ -46,7 +46,7 @@
     <div class="section-clear" style="text-align: center;">
         <div class="row">
             <div class="col-md-12 section">
-                <h3>News Feed</h3>
+                <h2>News Feed</h2>
                 <hr>
                 <h3 style="text-align: center"> <span style="margin-left: 0; "><input name="searchbar" id="searchbar"
                                                                                       size="50px"
@@ -62,9 +62,10 @@
             <span id="posts">
             {% for newsfeed in NewsFeed %}
 
-
-                 {{ newsfeed.post }}
-
+ <div id="scrumfinal" class="col-md-12 blue-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center;">
+     <h2 style="color: white">"{{ newsfeed.post }}"</h2> by <b>{{ newsfeed.profile }}</b> at <b>{{ newsfeed.created }}</b><hr>
+                </div>
 
             {% endfor %}
             </span>
@@ -132,6 +133,7 @@
                     },
                     success: function () {
                         $('#posts').load(document.URL + ' #posts');
+                        $("#searchbar").val("");
                     },
                     error: function (jqXhr, textStatus, errorThrown) {
                         alert("Oh No!");
