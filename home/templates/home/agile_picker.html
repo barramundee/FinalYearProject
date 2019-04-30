@@ -42,11 +42,12 @@
 
     <div>
 
+        {# SCRUM QUESTIONS #}
+        <span id="scrumquestions">
         <div id="scrum1" class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center">
-            <br>Are
-            Requirements clearly defined?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum1()">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeslean1()"
+            <br>Do requirements change monthly?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum1()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean1()"
                     style="animation-delay:0.07s">No
             </button>
         </div>
@@ -54,8 +55,8 @@
         <div id="scrum2" class="col-md-12 blue-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is work
             based on iterations?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum2()">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeskanban1()"
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum2()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban1()"
                     style="animation-delay:0.07s">No
             </button>
         </div>
@@ -63,8 +64,8 @@
         <div id="scrum3" class="col-md-12 blue-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will your work
             have big release goals?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum3()">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="yeskanban4()"
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum3()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban4()"
                     style="animation-delay:0.07s">No
             </button>
         </div>
@@ -72,117 +73,324 @@
         <div id="scrum4" class="col-md-12 blue-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is success defined by
             responsiveness to customer requests?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum4()">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum4()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qscrum9()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
         <div id="scrum5" class="col-md-12 blue-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will your team work in
-            sprints?<br><br>
-            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yesscrum5()">Yes</button>
-            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            sprints individually?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum5()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp8()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
+        <div id="scrum6" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want a methodology that is mostly used for management?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum6()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal11()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="scrum7" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Are sprint plannings important in your team's work flow?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum7()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qscrum10()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="scrum8" class="col-md-12 blue-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will you want specific roles allocated in your team?<br><br>
+            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qscrum8()">Yes</button>
+            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean11()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+</span>
+        {# END SCRUM QUESTIONS #}
+
+        {# KANBAN QUESTIONS #}
+        <span id="kanbanquestions">
         <div id="kanban1" class="col-md-12 orange-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is work based on work
             states?<br><br>
-            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban2()">Yes
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban2()">Yes
             </button>
-            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban10()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
         <div id="kanban2" class="col-md-12 orange-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will work be based on
             repetitive tasks?<br><br>
-            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban3()">Yes
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban3()">Yes
             </button>
-            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp2()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
         <div id="kanban3" class="col-md-12 orange-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is your work based on
             small incoming pieces of work?<br><br>
-            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="yeskanban3()">Yes
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qxp1()">Yes
             </button>
-            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban9()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
+        <div id="kanban4" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is visualization of work important for the team members?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban11()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban12()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban5" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is flexibility in planning a must in your line of work?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban5()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban13()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban6" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Track work based on "in-progress" or "done"?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban6()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban14()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban7" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Would you like to avoid production of extra resources?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban7()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban15()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="kanban8" class="col-md-12 orange-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Would you like team members to pick their work from a work pool?<br><br>
+            <button id="kanbanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qkanban8()">Yes
+            </button>
+            <button id="kanbanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qkanban16()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+</span>
+        {# END KANBAN QUESTIONS #}
+
+        {# LEAN QUESTIONS #}
+        <span id="leanquestions">
         <div id="lean1" class="col-md-12 green-section"
              style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is your project customer
             service based?<br><br>
-            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="">Yes</button>
-            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean2()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal1()"
+                    style="animation-delay:0.07s">No
             </button>
         </div>
 
-        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center "><br>Are#}
-        {#            changes during the development probable to happen?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum #}
-        {#        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
-        {#            there be a need to test the solution?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum #}
-        {#        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
-        {#            the Product Owner be fully available?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum #}
-        {#        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Is the#}
-        {#            Client's culture open to innovation?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {#        > {# Scrum #}
-        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
-        {#            your project have big release goals or milestones?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum #}
-        {#        <div class="col-md-12 pink-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Progress#}
-        {#            and Planning or Flow and Throughput?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum vs Kanban #}
-        {#        <div class="col-md-12 purple-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Iterations#}
-        {#            or Work States?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Scrum vs Kanban #}
-        {#        <div class="col-md-12 blue-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will you#}
-        {#            want a flexible methodology?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Kanban #}
-        {#        <div class="col-md-12 green-section" style="color: whitesmoke; font-size: 18px; text-align: center"><br>Will#}
-        {#            your work consist of small pieces, defect fixes or small enhancement requests?<br><br>#}
-        {#            <button id="scrumyes" type="submit" class="btn btn-success btn-lg bouncy">Yes</button>#}
-        {#            <button id="scrumno" type="submit" class="btn btn-danger btn-lg bouncy" style="animation-delay:0.07s">No#}
-        {#            </button>#}
-        {#        </div>#}
-        {# Kanban #}
+        <div id="lean2" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want team empowerment through motivation to be standard?<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean3()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean10()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="lean3" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Eliminating waste is key in your line of work.<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean4()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal12()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="lean4" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Does the customer come first in your line of work?<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean5()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean13()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="lean5" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want to execute tasks quicker while adapting to change?<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean6()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean9()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="lean6" class="col-md-12 green-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Does the concept of a lightweight leadership interest you?<br><br>
+            <button id="leanyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qlean7()">Yes</button>
+            <button id="leanno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean8()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+</span>
+        {# LEAN QUESTIONS #}
+
+        {# XP QUESTIONS #}
+        <span id="xpquestions">
+        <div id="xp1" class="col-md-12 red-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Does your work require you to have frequent code releases?<br><br>
+            <button id="xpyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qxp3()">Yes</button>
+            <button id="xpno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp11()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="xp2" class="col-md-12 red-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is programming on your own standard in your line of work?<br><br>
+            <button id="xpyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qxp7()">Yes</button>
+            <button id="xpno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp4()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="xp3" class="col-md-12 red-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Will extensive unit testing be part of your line of work?<br><br>
+            <button id="xpyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qxp5()">Yes</button>
+            <button id="xpno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp9()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="xp4" class="col-md-12 red-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is extreme code reviewing a standard in your line of work?<br><br>
+            <button id="xpyes" type="submit" class="btn btn-success btn-lg bouncy" onclick="Qxp6()">Yes</button>
+            <button id="xpno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qxp10()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+</span>
+        {# END XP QUESTIONS #}
+
+        {# CRYSTAL QUESTIONS #}
+        <span id="crystalquestions">
+        <div id="crystal1" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Is the agile methodology you're looking for human-powered?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal2()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal6()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal2" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Are you looking for a lightweight methodology?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal3()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal7()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal3" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want an adaptive methodology?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal4()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal10()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal4" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Open communication is key in your line of work?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal5()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal9()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal5" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want a methodology that is focused on people and its processes?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal8()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal13()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal6" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Are Users active in the project's development?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qcrystal14()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qcrystal15()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+
+        <div id="crystal7" class="col-md-12 purple-section"
+             style="color: whitesmoke; font-size: 18px; text-align: center; display: none"><br>Do you want timed iterations with a small product implementation at the end?<br><br>
+            <button id="crystalyes" type="submit" class="btn btn-success btn-lg bouncy"
+                    onclick="Qscrum11()">Yes</button>
+            <button id="crystalno" type="submit" class="btn btn-danger btn-lg bouncy" onclick="Qlean12()"
+                    style="animation-delay:0.07s">No
+            </button>
+        </div>
+</span>
+        {# END CRYSTAL QUESTIONS #}
+
+        <span id="finalquestions">
+
+            <div id="scrumfinal" class="col-md-12 blue-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <h2 style="color: white">Scrum</h2><hr>
+                </div>
+
+            <div id="kanbanfinal" class="col-md-12 orange-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <h2 style="color: white">Kanban</h2><hr>
+                </div>
+
+            <div id="xpfinal" class="col-md-12 red-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <h2 style="color: white">Extreme Programming</h2><hr>
+                </div>
+
+            <div id="leanfinal" class="col-md-12 green-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <h2 style="color: white">Lean</h2><hr>
+                </div>
+
+            <div id="crystalfinal" class="col-md-12 purple-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <h2 style="color: white">Crystal</h2><hr>
+               </div>
+
+            <div id="waterfallfinal" class="col-md-12 white-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <br>Waterfall<br><br>
+            </div>
+
+            <div id="pointsfinal" class="col-md-12 yellow-section"
+                 style="color: whitesmoke; font-size: 18px; text-align: center; display: none;">
+                <p>Scrum Points: <span id="scrumpoints"></span>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;Kanban Points: <span
+                        id="kanbanpoints"></span>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;Lean Points: <span
+                        id="leanpoints"></span>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;XP Points: <span
+                        id="xppoints"></span>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;Crystal Points: <span
+                        id="crystalpoints"></span></p>
+            </div>
+        </span>
     </div>
 
     <div class="container">
@@ -332,52 +540,450 @@
 
 {% block script %}
     <script language="JavaScript">
-        function yesscrum1() {
+
+        let scrumpoints = 0;
+        let leanpoints = 0;
+        let kanbanpoints = 0;
+        let crystalpoints = 0;
+        let xppoints = 0;
+
+        {# SCRUM FUNCTIONS #}
+
+
+        function Qscrum1() {
+            scrumpoints++;
             $('#scrum1').slideToggle("slow");
             $('#scrum2').slideToggle("slow");
         }
 
-        function yesscrum2() {
+        function Qscrum2() {
+            scrumpoints++;
             $('#scrum2').slideToggle("slow");
             $('#scrum3').slideToggle("slow");
         }
 
-        function yesscrum3() {
+        function Qscrum3() {
+            scrumpoints++;
             $('#scrum3').slideToggle("slow");
             $('#scrum4').slideToggle("slow");
         }
 
-        function yesscrum4() {
+        function Qscrum4() {
+            scrumpoints++;
             $('#scrum4').slideToggle("slow");
             $('#scrum5').slideToggle("slow");
         }
 
-        function yesscrum5() {
-            alert("Scrum")
+        function Qscrum5() {
+            scrumpoints++;
+            $('#scrum5').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
         }
 
-        function yeslean1() {
-            $('#lean1').slideToggle("slow");
-            $('#scrum1').slideToggle("slow");
+        function Qscrum6() {
+            scrumpoints++;
+            $('#scrum6').slideToggle("slow");
+            $('#scrum7').slideToggle("slow");
         }
 
-        function yeskanban1() {
+        function Qscrum7() {
+            scrumpoints++;
+            $('#scrum7').slideToggle("slow");
+            $('#scrum8').slideToggle("slow");
+        }
+
+        function Qscrum8() {
+            scrumpoints++;
+            $('#scrum8').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+
+        }
+
+        function Qscrum9() {
+            scrumpoints++;
+            kanbanpoints++;
+            $('#scrum4').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+            $('#kanbanfinal').slideToggle("slow");
+        }
+
+        function Qscrum10() {
+            leanpoints++;
+            $('#scrum7').slideToggle("slow");
+            $('#lean6').slideToggle("slow");
+        }
+
+        function Qscrum11() {
+            scrumpoints++;
+            $('#crystal7').slideToggle("slow");
+            $('#scrum8').slideToggle("slow");
+        }
+
+        {# END SCRUM FUNCTIONS #}
+
+        {# KANBAN FUNCTIONS #}
+
+        function Qkanban1() {
+            kanbanpoints++;
             $('#scrum2').slideToggle("slow");
             $('#kanban1').slideToggle("slow");
         }
 
-        function yeskanban2() {
+        function Qkanban2() {
+            kanbanpoints++;
             $('#kanban1').slideToggle("slow");
             $('#kanban2').slideToggle("slow");
         }
 
-        function yeskanban3() {
-            alert("SCRUM / Kanban")
+        function Qkanban3() {
+            kanbanpoints++;
+            scrumpoints++;
+            $('#kanban2').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+            $('#kanbanfinal').slideToggle("slow");
         }
 
-        function yeskanban4() {
+        function Qkanban4() {
+            kanbanpoints++;
             $('#scrum3').slideToggle("slow");
             $('#kanban3').slideToggle("slow");
         }
+
+        function Qkanban5() {
+            kanbanpoints++;
+            $('#kanban5').slideToggle("slow");
+            $('#kanban6').slideToggle("slow");
+        }
+
+        function Qkanban6() {
+            kanbanpoints++;
+            $('#kanban6').slideToggle("slow");
+            $('#kanbanfinal').slideToggle("slow");
+        }
+
+        function Qkanban7() {
+            kanbanpoints++;
+            $('#kanban7').slideToggle("slow");
+            $('#kanban8').slideToggle("slow");
+        }
+
+        function Qkanban8() {
+            kanbanpoints++;
+            leanpoints++;
+            $('#kanban8').slideToggle("slow");
+            $('#kanbanfinal').slideToggle("slow");
+            $('#leanfinal').slideToggle("slow");
+        }
+
+        function Qkanban9() {
+            kanbanpoints++;
+            $('#kanban3').slideToggle("slow");
+            $('#kanban4').slideToggle("slow");
+        }
+
+        function Qkanban10() {
+            kanbanpoints++;
+            $('#kanban1').slideToggle("slow");
+            $('#kanban4').slideToggle("slow");
+        }
+
+        function Qkanban11() {
+            kanbanpoints++;
+            $('#kanban4').slideToggle("slow");
+            $('#kanban5').slideToggle("slow");
+        }
+
+        function Qkanban12() {
+            leanpoints++;
+            $('#kanban4').slideToggle("slow");
+            $('#lean4').slideToggle("slow");
+        }
+
+        function Qkanban13() {
+            leanpoints++;
+            $('#kanban5').slideToggle("slow");
+            $('#lean4').slideToggle("slow");
+        }
+
+        function Qkanban14() {
+            scrumpoints++;
+            $('#kanban6').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+        }
+
+        function Qkanban15() {
+            scrumpoints++;
+            $('#kanban7').slideToggle("slow");
+            $('#scrum7').slideToggle("slow");
+        }
+
+        function Qkanban16() {
+            scrumpoints++;
+            $('#kanban8').slideToggle("slow");
+            $('#scrum8').slideToggle("slow");
+        }
+
+
+        {# END KANBAN FUNCTIONS #}
+
+
+        function Qlean1() {
+            leanpoints++;
+            $('#lean1').slideToggle("slow");
+            $('#scrum1').slideToggle("slow");
+        }
+
+        function Qlean2() {
+            leanpoints++;
+            $('#lean1').slideToggle("slow");
+            $('#lean2').slideToggle("slow");
+        }
+
+        function Qlean3() {
+            leanpoints++;
+            $('#lean2').slideToggle("slow");
+            $('#lean3').slideToggle("slow");
+        }
+
+        function Qlean4() {
+            leanpoints++;
+            $('#lean3').slideToggle("slow");
+            $('#lean4').slideToggle("slow");
+        }
+
+        function Qlean5() {
+            leanpoints++;
+            $('#lean4').slideToggle("slow");
+            $('#leanfinal').slideToggle("slow");
+        }
+
+        function Qlean6() {
+            scrumpoints++;
+            $('#lean5').slideToggle("slow");
+            $('#scrum6').slideToggle("slow");
+        }
+
+        function Qlean7() {
+            leanpoints++;
+            $('#lean6').slideToggle("slow");
+            $('#leanfinal').slideToggle("slow");
+        }
+
+        function Qlean8() {
+            crystalpoints++;
+            $('#lean6').slideToggle("slow");
+            $('#crystalfinal').slideToggle("slow");
+        }
+
+        function Qlean9() {
+            crystalpoints++;
+            $('#lean5').slideToggle("slow");
+            $('#crystal6').slideToggle("slow");
+        }
+
+        function Qlean10() {
+            crystalpoints++;
+            $('#lean2').slideToggle("slow");
+            $('#crystal5').slideToggle("slow");
+        }
+
+        function Qlean11() {
+            leanpoints++;
+            $('#scrum8').slideToggle("slow");
+            $('#lean6').slideToggle("slow");
+        }
+
+        function Qlean12() {
+            leanpoints++;
+            $('#crystal7').slideToggle("slow");
+            $('#lean6').slideToggle("slow");
+        }
+
+        function Qlean13() {
+            crystalpoints++;
+            $('#lean4').slideToggle("slow");
+            $('#crystal4').slideToggle("slow");
+        }
+
+        {# XP FUNCTIONS #}
+
+        function Qxp1() {
+            xppoints++;
+            $('#kanban3').slideToggle("slow");
+            $('#xp1').slideToggle("slow");
+        }
+
+        function Qxp2() {
+            xppoints++;
+            $('#kanban2').slideToggle("slow");
+            $('#xp1').slideToggle("slow");
+        }
+
+        function Qxp3() {
+            xppoints++;
+            $('#xp1').slideToggle("slow");
+            $('#xp3').slideToggle("slow");
+        }
+
+        function Qxp4() {
+            xppoints++;
+            $('#xp2').slideToggle("slow");
+            $('#xp3').slideToggle("slow");
+        }
+
+        function Qxp5() {
+            xppoints++;
+            $('#xp3').slideToggle("slow");
+            $('#xp4').slideToggle("slow");
+        }
+
+        function Qxp6() {
+            xppoints++;
+            $('#xp4').slideToggle("slow");
+            $('#xpfinal').slideToggle("slow");
+        }
+
+        function Qxp7() {
+            scrumpoints++;
+            $('#xp2').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+        }
+
+        function Qxp8() {
+            xppoints++;
+            $('#scrum5').slideToggle("slow");
+            $('#xp2').slideToggle("slow");
+        }
+
+        function Qxp9() {
+            xppoints++;
+            scrumpoints++;
+            $('#xp3').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+            $('#xpfinal').slideToggle("slow");
+        }
+
+        function Qxp10() {
+            xppoints++;
+            scrumpoints++;
+            $('#xp4').slideToggle("slow");
+            $('#scrumfinal').slideToggle("slow");
+            $('#xpfinal').slideToggle("slow");
+        }
+
+        function Qxp11() {
+            kanbanpoints++;
+            $('#xp1').slideToggle("slow");
+            $('#kanban6').slideToggle("slow");
+
+        }
+
+        {# END XP FUNCTIONS #}
+
+        {# CRYSTAL QUESTIONS #}
+
+        function Qcrystal1() {
+            crystalpoints++;
+            $('#lean1').slideToggle("slow");
+            $('#crystal1').slideToggle("slow");
+        }
+
+        function Qcrystal2() {
+            crystalpoints++;
+            $('#crystal1').slideToggle("slow");
+            $('#crystal2').slideToggle("slow");
+        }
+
+        function Qcrystal3() {
+            crystalpoints++;
+            $('#crystal2').slideToggle("slow");
+            $('#crystal3').slideToggle("slow");
+        }
+
+        function Qcrystal4() {
+            crystalpoints++;
+            $('#crystal3').slideToggle("slow");
+            $('#crystal4').slideToggle("slow");
+        }
+
+        function Qcrystal5() {
+            crystalpoints++;
+            $('#crystal4').slideToggle("slow");
+            $('#crystalfinal').slideToggle("slow");
+        }
+
+        function Qcrystal6() {
+            leanpoints++;
+            $('#crystal1').slideToggle("slow");
+            $('#lean5').slideToggle("slow");
+        }
+
+        function Qcrystal7() {
+            kanbanpoints++;
+            $('#crystal2').slideToggle("slow");
+            $('#kanban7').slideToggle("slow");
+        }
+
+        function Qcrystal8() {
+            kanbanpoints++;
+            $('#crystal5').slideToggle("slow");
+            $('#kanban7').slideToggle("slow");
+        }
+
+        function Qcrystal9() {
+            kanbanpoints++;
+            leanpoints++;
+            $('#crystal4').slideToggle("slow");
+            $('#kanbanfinal').slideToggle("slow");
+            $('#leanfinal').slideToggle("slow");
+        }
+
+        function Qcrystal10() {
+            kanbanpoints++;
+            $('#crystal3').slideToggle("slow");
+            $('#kanban8').slideToggle("slow");
+        }
+
+        function Qcrystal11() {
+            crystalpoints++;
+            $('#scrum6').slideToggle("slow");
+            $('#crystal7').slideToggle("slow");
+        }
+
+        function Qcrystal12() {
+            crystalpoints++;
+            $('#lean3').slideToggle("slow");
+            $('#crystal3').slideToggle("slow");
+        }
+
+        function Qcrystal13() {
+            scrumpoints++;
+            $('#crystal5').slideToggle("slow");
+            $('#scrum6').slideToggle("slow");
+        }
+
+        function Qcrystal14() {
+            crystalpoints++;
+            $('#crystal6').slideToggle("slow");
+            $('#crystal7').slideToggle("slow");
+        }
+
+        function Qcrystal15() {
+            $('#crystal6').slideToggle("slow");
+            $('#waterfallfinal').slideToggle("slow");
+        }
+
+        {# END CRYSTAL QUESTIONS #}
+
+        $("button").click(function () {
+            $('#pointsfinal').slideDown("slow");
+            document.getElementById('scrumpoints').innerHTML = scrumpoints;
+            document.getElementById('kanbanpoints').innerHTML = kanbanpoints;
+            document.getElementById('leanpoints').innerHTML = leanpoints;
+            document.getElementById('crystalpoints').innerHTML = crystalpoints;
+            document.getElementById('xppoints').innerHTML = xppoints;
+        });
+
+
     </script>
 {% endblock %}

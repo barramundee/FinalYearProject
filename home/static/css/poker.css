@@ -366,6 +366,13 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
+.red-section{
+    background: #ed0009;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
 .green-section{
     background: #009688;
     margin-bottom: 12px;
@@ -390,6 +397,21 @@ input:checked + .slider:before {
 .purple-section{
 
     background: rebeccapurple;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+.white-section{
+
+    background: #979999;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s ease-out;
+    padding: 20px;
+}
+
+.yellow-section{
+    background: #999000;
     margin-bottom: 12px;
     transition: box-shadow 0.3s ease-out;
     padding: 20px;
