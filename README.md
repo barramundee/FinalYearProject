@@ -186,12 +186,10 @@ As I was keen on expanding my knowledge in Python, instead of Netbeans I settled
   Overall, most of those asked had a positive perception of Agile working, which suggests there would be good support for my application. However, it also presents an opportunity to make Agile more appealing to those who currently don’t have a favourable opinion of the approach, by making it easy to learn the different methodologies and simplifying the product development process via the planning tools. 
 
 
-
     4. Would you find an application to assist selection of an Agile methodology useful?
     a)	Yes
     b)	No
     c)	Don’t know 
-
 
 
   Most of the participants asked said they would find the Agile planning application beneficial. This is of course highly encouraging and suggests the product has the potential to add value to the individuals and the organisation as a whole. Those that said Don’t know might be those that have answered they hadn’t heard about those Agile Methodologies
@@ -210,8 +208,8 @@ As I was keen on expanding my knowledge in Python, instead of Netbeans I settled
   Of the options for features for the application, ease of use was the most popular. This is of course essential as it will need to appeal to individuals of all different backgrounds and experience levels. There is also an expectation of most software these days to be intuitive to use and not require extensive training or guidance, this will be important to keep in mind when developing the application. However, personally I believe all the elements listed in the questionnaire are highly relevant and important in making the application a high quality and useful product, therefore I intend to integrate all of the features into the final product. 
 
 
-
 ## 3.3 Modelling requirements and relevant diagrams
+
 
   When development of this project started, it was important to outline what the main requirements were in order to have a working prototype. Thus, when modelling the requirements needed, these were split into two distinct groups – the first one would be the front-end, meaning how the code looked (HTML, CSS), and the other one would be the back-end, meaning how the code behaved in the background (database, functions). 
 
@@ -223,21 +221,6 @@ As I was keen on expanding my knowledge in Python, instead of Netbeans I settled
 
 
 ## 3.4 List of project requirements 
-
-ESSENTIAL	DESIRABLE	LUXURY
-Registration
-Login
-Profile
-Home Page
-Personal Stories	Team Management
-Social Element
-Team Competition
-Sprints
-Team Stories
-Squad Customization
-Agile Planning Tools	AI Picking Agile Methodology
-Research into every Agile Methodology proposed
-
 
 Although the “AI Picking Agile Methodology” is categorized under “Luxury”, it will be the main aspect of the web app. Without it, it would simply be on the same baseline as the other apps that were reviewed on review of projects / applications section. The essential, are simply what a usual Agile web application would offer to its users – registration and login being the simpler ones. 
 Another requirement that was essential for the success of this project was a thorough research into every methodology. Although the “main” project will be the code presented (something physical that can be tested), one of the main outcomes of this project is the research into every Agile Methodology that will be discussed further in this report, to make sure that an implementation of either of them is backed by a thorough knowledge.
@@ -277,7 +260,6 @@ To begin with, Scrum is a methodology mostly used for management. This means tha
 •	Development Team: this is where the developers, engineers and designers for example would be put into. These are usually small teams (between 6-10 people, from my experience) that will work in sprints to deliver working software.
 •	Scrum Master: the person who hosts the Daily Scrum meetings, which generally follow the script of “What did you do yesterday?”, “What will you do today?” and “Any impediments?”.
 •	Product Owner: this is the person who makes the connection between the development team and the stakeholders.
-
   Another aspect that distinguishes Scrum from the other frameworks is its workflow – sprint planning, sprint, and sprint review. Scrum, and the other frameworks that will be mentioned ahead, also uses an Agile element called artifacts (ways of sharing information / making information transparent). Scrum specifically though, has User Stories, Tasks, Backlogs, Sprint Backlogs and Extensions – for example, a planning poker game that lets users decide the weight / time required / effort required for a specific story.
 
 ## 4.2 Kanban
